@@ -1,8 +1,8 @@
 {
-  "name": "multi-step-form",
+  "name": "audiophile-ecommerce-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Astrix1234.github.io/multi-step-form/",
+  "homepage": "https://Astrix1234.github.io/Audiophile-ecommerce-website/",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.5",
