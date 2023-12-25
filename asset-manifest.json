@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/Audiophile-ecommerce-website/static/css/main.2244484b.css",
+    "main.js": "/Audiophile-ecommerce-website/static/js/main.c0e486b4.js",
+    "static/css/82.19486bc1.chunk.css": "/Audiophile-ecommerce-website/static/css/82.19486bc1.chunk.css",
+    "static/js/82.c4a3b132.chunk.js": "/Audiophile-ecommerce-website/static/js/82.c4a3b132.chunk.js",
+    "static/css/667.c5918655.chunk.css": "/Audiophile-ecommerce-website/static/css/667.c5918655.chunk.css",
+    "static/js/667.b8d7c82d.chunk.js": "/Audiophile-ecommerce-website/static/js/667.b8d7c82d.chunk.js",
+    "static/css/651.d5a255d1.chunk.css": "/Audiophile-ecommerce-website/static/css/651.d5a255d1.chunk.css",
+    "static/js/651.f7d30691.chunk.js": "/Audiophile-ecommerce-website/static/js/651.f7d30691.chunk.js",
+    "static/css/934.ce174829.chunk.css": "/Audiophile-ecommerce-website/static/css/934.ce174829.chunk.css",
+    "static/js/934.f121c12f.chunk.js": "/Audiophile-ecommerce-website/static/js/934.f121c12f.chunk.js",
+    "static/css/609.22f3470a.chunk.css": "/Audiophile-ecommerce-website/static/css/609.22f3470a.chunk.css",
+    "static/js/609.00677d3b.chunk.js": "/Audiophile-ecommerce-website/static/js/609.00677d3b.chunk.js",
+    "static/js/918.b7366595.chunk.js": "/Audiophile-ecommerce-website/static/js/918.b7366595.chunk.js",
+    "index.html": "/Audiophile-ecommerce-website/index.html",
+    "main.2244484b.css.map": "/Audiophile-ecommerce-website/static/css/main.2244484b.css.map",
+    "main.c0e486b4.js.map": "/Audiophile-ecommerce-website/static/js/main.c0e486b4.js.map",
+    "82.19486bc1.chunk.css.map": "/Audiophile-ecommerce-website/static/css/82.19486bc1.chunk.css.map",
+    "82.c4a3b132.chunk.js.map": "/Audiophile-ecommerce-website/static/js/82.c4a3b132.chunk.js.map",
+    "667.c5918655.chunk.css.map": "/Audiophile-ecommerce-website/static/css/667.c5918655.chunk.css.map",
+    "667.b8d7c82d.chunk.js.map": "/Audiophile-ecommerce-website/static/js/667.b8d7c82d.chunk.js.map",
+    "651.d5a255d1.chunk.css.map": "/Audiophile-ecommerce-website/static/css/651.d5a255d1.chunk.css.map",
+    "651.f7d30691.chunk.js.map": "/Audiophile-ecommerce-website/static/js/651.f7d30691.chunk.js.map",
+    "934.ce174829.chunk.css.map": "/Audiophile-ecommerce-website/static/css/934.ce174829.chunk.css.map",
+    "934.f121c12f.chunk.js.map": "/Audiophile-ecommerce-website/static/js/934.f121c12f.chunk.js.map",
+    "609.22f3470a.chunk.css.map": "/Audiophile-ecommerce-website/static/css/609.22f3470a.chunk.css.map",
+    "609.00677d3b.chunk.js.map": "/Audiophile-ecommerce-website/static/js/609.00677d3b.chunk.js.map",
+    "918.b7366595.chunk.js.map": "/Audiophile-ecommerce-website/static/js/918.b7366595.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2244484b.css",
+    "static/js/main.c0e486b4.js"
+  ]
+}
