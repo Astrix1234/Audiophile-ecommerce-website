@@ -1,0 +1,69 @@
+.container {
+    width: 100%;
+    padding: 13px 16px 10px 16px;
+    border: 1px solid #D6D9E6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: border 0.3s ease-in-out;
+}
+
+.container:hover,
+.container:focus {
+    border: 1px solid #483EFF;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #D6D9E6;
+}
+
+.description {
+    margin-left: 16px;
+}
+
+.plan {
+    font-size: 16px;
+    font-weight: 500;
+    color: #022959;
+    margin-bottom: 3px;
+}
+
+.comment {
+    font-size: 12px;
+    line-height: 20px;
+    color: #9699AA;
+}
+
+.price {
+    font-size: 12px;
+    line-height: 20px;
+    color: #483EFF;
+    margin-left: auto;
+}
+
+@media (min-width: 1180px) {
+    .container {
+        width: 450px;
+        padding: 18px 24px;
+    }
+
+    .description {
+        margin-left: 24px;
+    }
+
+    .plan {
+        margin-bottom: 7px;
+    }
+
+    .comment {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 15px;
+    }
+}
