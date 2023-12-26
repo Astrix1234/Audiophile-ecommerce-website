@@ -1,0 +1,64 @@
+.header {
+    background-color: var(--super-dark);
+    position: relative;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    &__menu {
+        position: absolute;
+        z-index: 10;
+        padding: 102px 0 67px 0;
+        // background-color: var(--bgc-color);
+        background-color: red;
+        width: 100%;
+        border-radius: 0px 0px 8px 8px;
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+        transform-origin: top left;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+            visibility 0.3s ease-in-out;
+    }
+}
+
+.headerDesktop {
+    height: 97px;
+
+    &__container {
+        width: 100%;
+        max-width: 1110px;
+    }
+}
+
+.headerTablet {
+    height: 90px;
+
+    &__container {
+        width: 100%;
+        max-width: 689px;
+    }
+
+}
+
+.headerMobile {
+    height: 90px;
+
+    &__container {
+        width: 100%;
+        max-width: 327px;
+    }
+
+
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+}

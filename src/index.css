@@ -1,22 +1,22 @@
 @import "modern-normalize/modern-normalize.css";
+@import './stylesheets/vars.css';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap');
 
 
 * {
   margin: 0;
   padding: 0;
-}
-
-ul {
+  text-decoration: none;
   list-style: none;
 }
 
 
 body {
-  margin: 0;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #EFF5FF;
+  background-color: var(--bgc-color);
+  color: var(--super-dark);
 
 }
 

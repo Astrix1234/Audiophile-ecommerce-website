@@ -1,16 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import AppBar from '../AppBar/AppBar';
 import { Suspense } from 'react';
-import css from './Layout.module.css';
+import { Header } from '../Header/Header';
 
 export const Layout = () => {
   return (
-    <div className={css.container}>
-      <AppBar />
+    <>
+      <Header />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-    </div>
+    </>
   );
 };

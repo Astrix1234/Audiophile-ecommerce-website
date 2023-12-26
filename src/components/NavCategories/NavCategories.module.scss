@@ -1,0 +1,29 @@
+.navCategories {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    &__item {
+        background-color: var(--grey);
+        position: relative;
+        border-radius: 8px;
+    }
+
+    &__picture {}
+}
+
+.navCategoriesTablet {
+    width: 100%;
+    max-width: 689px;
+
+    &__item {
+        height: 165px;
+        width: 223px;
+    }
+
+    &__picture {
+        transform: translateY(-37%);
+        height: 160px;
+        margin: 0 auto;
+    }
+}
