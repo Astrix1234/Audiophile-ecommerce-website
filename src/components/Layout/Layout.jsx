@@ -12,7 +12,7 @@ export const Layout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-      {/* <SectionAudioGear /> */}
+      <SectionAudioGear />
       <Footer />
     </>
   );

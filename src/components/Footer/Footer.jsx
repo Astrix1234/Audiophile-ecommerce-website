@@ -26,7 +26,7 @@ export const Footer = () => {
     aboutStyle += ` ${scss.footerDesktop__about}`;
     copyrightStyle += ` ${scss.footerDesktop__copyright}`;
   } else if (isTablet) {
-    footerStyle += ` ${scss.headerTablet}`;
+    footerStyle += ` ${scss.footerTablet}`;
     containerStyle += ` ${scss.footerTablet__container}`;
     lineStyle += ` ${scss.footerTablet__line}`;
     containerThirdStyle += ` ${scss.footerTablet__containerThird}`;
@@ -41,7 +41,7 @@ export const Footer = () => {
   }
 
   return (
-    <header className={footerStyle}>
+    <footer className={footerStyle}>
       <div className={containerStyle}>
         <div className={lineStyle}></div>
 
@@ -68,6 +68,6 @@ export const Footer = () => {
           {(isTablet || isMobile) && <Media />}
         </div>
       </div>
-    </header>
+    </footer>
   );
 };
