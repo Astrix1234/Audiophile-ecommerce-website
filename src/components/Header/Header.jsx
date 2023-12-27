@@ -19,8 +19,6 @@ export const Header = () => {
   let containerStyle = scss.header__container;
   let menuStyle = scss.header__menu;
 
-  const menuClasses = `${menuStyle} ${!isOpened ? scss['is-hidden'] : ''}`;
-
   if (isDesktop) {
     headerStyle += ` ${scss.headerDesktop}`;
     containerStyle += ` ${scss.headerDesktop__container}`;
@@ -33,6 +31,8 @@ export const Header = () => {
     containerStyle += ` ${scss.headerMobile__container}`;
     menuStyle += ` ${scss.headerMobile__menu}`;
   }
+
+  const menuClasses = `${menuStyle} ${!isOpened ? scss['is-hidden'] : ''}`;
 
   const toggleMenu = () => {
     setIsOpened(!isOpened);

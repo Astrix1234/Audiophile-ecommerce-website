@@ -12,9 +12,7 @@
     &__menu {
         position: absolute;
         z-index: 10;
-        padding: 102px 0 67px 0;
-        // background-color: var(--bgc-color);
-        background-color: red;
+        background-color: var(--light);
         width: 100%;
         border-radius: 0px 0px 8px 8px;
         visibility: visible;
@@ -43,6 +41,10 @@
         max-width: 689px;
     }
 
+    &__menu {
+        padding: 108px 0 67px 0;
+    }
+
 }
 
 .headerMobile {
@@ -53,7 +55,9 @@
         max-width: 327px;
     }
 
-
+    &__menu {
+        padding: 84px 0 35px 0;
+    }
 }
 
 .is-hidden {
