@@ -3,6 +3,7 @@ import scss from './Footer.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { Logo } from 'components/Logo/Logo';
 import { NavLinksFooter } from 'components/NavLinksFooter/NavLinksFooter';
+import { Media } from 'components/Media/Media';
 
 export const Footer = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -11,40 +12,32 @@ export const Footer = () => {
 
   let footerStyle = scss.footer;
   let containerStyle = scss.footer__container;
-  let containerSecondStyle = scss.footer__containerSecond;
   let containerThirdStyle = scss.footer__containerThird;
   let lineStyle = scss.footer__line;
-  let containerForthStyle = scss.footer__containerForth;
   let aboutStyle = scss.footer__about;
   let copyrightStyle = scss.footer__copyright;
+  let containerFifthStyle;
 
   if (isDesktop) {
     footerStyle += ` ${scss.footerDesktop}`;
     containerStyle += ` ${scss.footerDesktop__container}`;
     lineStyle += ` ${scss.footerDesktop__line}`;
-    containerSecondStyle += ` ${scss.footerDesktop__containerSecond}`;
     containerThirdStyle += ` ${scss.footerDesktop__containerThird}`;
-    containerForthStyle += ` ${scss.footerDesktop__containerForth}`;
     aboutStyle += ` ${scss.footerDesktop__about}`;
     copyrightStyle += ` ${scss.footerDesktop__copyright}`;
   } else if (isTablet) {
     footerStyle += ` ${scss.headerTablet}`;
     containerStyle += ` ${scss.footerTablet__container}`;
     lineStyle += ` ${scss.footerTablet__line}`;
-    containerSecondStyle += ` ${scss.footerTablet__containerSecond}`;
     containerThirdStyle += ` ${scss.footerTablet__containerThird}`;
-    containerForthStyle += ` ${scss.footerTablet__containerForth}`;
-    aboutStyle += ` ${scss.footerTablet__about}`;
-    copyrightStyle += ` ${scss.footerTablet__copyright}`;
+    containerFifthStyle = ` ${scss.footerTablet__containerFifth}`;
   } else if (isMobile) {
     footerStyle += ` ${scss.footerMobile}`;
     containerStyle += ` ${scss.footerMobile__container}`;
     lineStyle += ` ${scss.footerMobile__line}`;
-    containerSecondStyle += ` ${scss.footerMobile__containerSecond}`;
     containerThirdStyle += ` ${scss.footerMobile__containerThird}`;
-    containerForthStyle += ` ${scss.footerMobile__containerForth}`;
     aboutStyle += ` ${scss.footerMobile__about}`;
-    copyrightStyle += ` ${scss.footerMobile__copyright}`;
+    containerFifthStyle = ` ${scss.footerMobile__containerFifth}`;
   }
 
   return (
@@ -52,9 +45,10 @@ export const Footer = () => {
       <div className={containerStyle}>
         <div className={lineStyle}></div>
 
-        <div className={containerSecondStyle}>
+        <div className={scss.footer__containerSecond}>
           <div className={containerThirdStyle}>
             <Logo />
+            {(isTablet || isMobile) && <NavLinksFooter />}
             <p className={aboutStyle}>
               Audiophile is an all in one stop to fulfill your audio needs.
               We're a small team of music lovers and sound specialists who are
@@ -62,11 +56,17 @@ export const Footer = () => {
               and visit our demo facility - we’re open 7 days a week.
             </p>
           </div>
-          <div className={containerForthStyle}>
-            <NavLinksFooter />
-          </div>
+          {isDesktop && (
+            <div className={scss.footer__containerForth}>
+              <NavLinksFooter />
+              <Media />
+            </div>
+          )}
         </div>
-        <p className={copyrightStyle}>Copyright 2021. All Rights Reserved</p>
+        <div className={containerFifthStyle}>
+          <p className={copyrightStyle}>Copyright 2021. All Rights Reserved</p>
+          {(isTablet || isMobile) && <Media />}
+        </div>
       </div>
     </header>
   );
