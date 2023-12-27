@@ -1,8 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
+import { Header } from 'components/Header/Header';
+import { Footer } from 'components/Footer/Footer';
+import { SectionAudioGear } from 'components/SectionAudioGear/SectionAudioGear';
 
 export const Layout = () => {
   return (
@@ -11,6 +12,7 @@ export const Layout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
+      {/* <SectionAudioGear /> */}
       <Footer />
     </>
   );
