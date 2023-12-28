@@ -64,7 +64,7 @@ export const Footer = () => {
           )}
         </div>
         <div className={containerFifthStyle}>
-          <p className={copyrightStyle}>Copyright 2021. All Rights Reserved</p>
+          <p className={copyrightStyle}>Copyright 2024. All Rights Reserved</p>
           {(isTablet || isMobile) && <Media />}
         </div>
       </div>
