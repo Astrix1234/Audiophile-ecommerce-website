@@ -39,6 +39,11 @@
 }
 
 .sectionMainHomeDesktop {
+    background-image: url("../../assets/home/desktop/image-hero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+
     &__container {
         max-width: 1110px;
         height: 632px;
@@ -62,29 +67,18 @@
         margin-bottom: 40px;
     }
 
-    &__picture {
-        width: 500px;
-        height: 530px;
-        background-image: url("../../assets/home/desktop/HomeDesktop2.png");
-        background-size: 102%;
-        background-repeat: no-repeat;
-        background-position: center top -20px;
-        margin-left: auto;
-        margin-right: 80px;
-    }
-
 }
 
 .sectionMainHomeTablet {
+    background-image: url("../../assets/home/tablet/image-header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
 
     &__container {
         max-width: 689px;
         height: 639px;
         padding-top: 127px;
-        background-image: url("../../assets/home/mobile/HomeMobile.png");
-        background-size: 71%;
-        background-repeat: no-repeat;
-        background-position: center bottom;
     }
 
     &__containerText {
@@ -107,7 +101,8 @@
 }
 
 .sectionMainHomeMobile {
-    background-image: url("../../assets/home/mobile/HomeMobile.png");
+    background-image: url("../../assets/home/mobile/image-header.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
 

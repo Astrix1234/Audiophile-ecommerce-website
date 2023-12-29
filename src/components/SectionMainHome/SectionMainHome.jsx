@@ -46,9 +46,6 @@ export const SectionMainHome = () => {
           </p>
           <LinkSeeOrange />
         </div>
-        {isDesktop && (
-          <div className={scss.sectionMainHomeDesktop__picture}></div>
-        )}
       </div>
     </section>
   );
