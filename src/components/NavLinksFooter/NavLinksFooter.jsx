@@ -16,13 +16,13 @@ export const NavLinksFooter = () => {
       <Link to="/home" className={scss.navLinksFooter__link}>
         HOME
       </Link>
-      <Link to="/headphones" className={scss.navLinksFooter__link}>
+      <Link to="/category/headphones" className={scss.navLinksFooter__link}>
         HEADPHONES
       </Link>
-      <Link to="/speakers" className={scss.navLinksFooter__link}>
+      <Link to="/category/speakers" className={scss.navLinksFooter__link}>
         SPEAKERS
       </Link>
-      <Link to="/earphones" className={scss.navLinksFooter__link}>
+      <Link to="/category/earphones" className={scss.navLinksFooter__link}>
         EARPHONES
       </Link>
     </div>

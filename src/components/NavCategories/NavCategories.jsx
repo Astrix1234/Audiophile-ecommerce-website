@@ -39,7 +39,7 @@ export const NavCategories = () => {
       <div className={itemStyle}>
         <img className={pictureStyle} src={headphonesImage} alt="headphones" />
         <p className={nameStyles}>HEADPHONES</p>
-        <Link to="/headphones" className={scss.navCategories__link}>
+        <Link to="/category/headphones" className={scss.navCategories__link}>
           SHOP
           <IconArrow />
         </Link>
@@ -48,7 +48,7 @@ export const NavCategories = () => {
       <div className={itemStyle}>
         <img className={pictureStyle} src={speakersImage} alt="headphones" />
         <p className={nameStyles}>HEADPHONES</p>
-        <Link to="/speakers" className={scss.navCategories__link}>
+        <Link to="/category/speakers" className={scss.navCategories__link}>
           SHOP
           <IconArrow />
         </Link>
@@ -57,7 +57,7 @@ export const NavCategories = () => {
       <div className={itemStyle}>
         <img className={pictureStyle} src={earphonesImage} alt="headphones" />
         <p className={nameStyles}>HEADPHONES</p>
-        <Link to="/earphones" className={scss.navCategories__link}>
+        <Link to="/category/earphones" className={scss.navCategories__link}>
           SHOP
           <IconArrow />
         </Link>

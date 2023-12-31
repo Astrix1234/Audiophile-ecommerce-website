@@ -5,7 +5,7 @@ import { Layout } from './Layout/Layout';
 import data from '../data.json';
 
 const Home = lazy(() => import('../pages/Home/Home'));
-const Headphones = lazy(() => import('../pages/Headphones/Headphones'));
+const Category = lazy(() => import('../pages/category/Category'));
 const Checkout = lazy(() => import('../pages/Checkout/Checkout'));
 
 export const DataContext = createContext();
@@ -17,7 +17,7 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/headphones" element={<Headphones />} />
+          <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Home />} />
         </Route>

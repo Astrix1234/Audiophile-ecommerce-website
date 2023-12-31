@@ -38,6 +38,10 @@ export const Header = () => {
     setIsOpened(!isOpened);
   };
 
+  const handleMenuClick = () => {
+    toggleMenu();
+  };
+
   const openCart = () => {};
 
   return (
@@ -51,7 +55,7 @@ export const Header = () => {
         <IconCard onClick={openCart} />
       </div>
       {!isDesktop && (
-        <div className={menuClasses}>
+        <div className={menuClasses} onClick={handleMenuClick}>
           <NavCategories />
         </div>
       )}

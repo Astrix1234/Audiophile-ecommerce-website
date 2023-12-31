@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import scss from './SectionProductsHeadphones.module.scss';
+import scss from './SectionProducts.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { DataContext } from 'components/App';
 import { LinkSeeOrange } from 'components/LinkSeeOrange/LinkSeeOrange';
 
-export const SectionProductsHeadphones = () => {
+export const SectionProducts = ({ category }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -16,6 +16,7 @@ export const SectionProductsHeadphones = () => {
   let textContainerStyle = scss.sectionProductsHeadphones__textContainer;
   let titleStyle = scss.sectionProductsHeadphones__title;
   let descriptionStyle = scss.sectionProductsHeadphones__description;
+  let newStyle = scss.sectionProductsHeadphones__new;
 
   if (isDesktop) {
     sectionProductsHeadphonesStyle += ` ${scss.sectionProductsHeadphonesDesktop}`;
@@ -25,6 +26,7 @@ export const SectionProductsHeadphones = () => {
     textContainerStyle += ` ${scss.sectionProductsHeadphonesDesktop__textContainer}`;
     titleStyle += ` ${scss.sectionProductsHeadphonesDesktop__title}`;
     descriptionStyle += ` ${scss.sectionProductsHeadphonesDesktop__description}`;
+    newStyle += ` ${scss.sectionProductsHeadphonesDesktop__new}`;
   } else if (isTablet) {
     sectionProductsHeadphonesStyle += ` ${scss.sectionProductsHeadphonesTablet}`;
     containerStyle += ` ${scss.sectionProductsHeadphonesTablet__container}`;
@@ -33,6 +35,7 @@ export const SectionProductsHeadphones = () => {
     textContainerStyle += ` ${scss.sectionProductsHeadphonesTablet__textContainer}`;
     titleStyle += ` ${scss.sectionProductsHeadphonesTablet__title}`;
     descriptionStyle += ` ${scss.sectionProductsHeadphonesTablet__description}`;
+    newStyle += ` ${scss.sectionProductsHeadphonesTablet__new}`;
   } else if (isMobile) {
     sectionProductsHeadphonesStyle += ` ${scss.sectionProductsHeadphonesMobile}`;
     containerStyle += ` ${scss.sectionProductsHeadphonesMobile__container}`;
@@ -41,13 +44,13 @@ export const SectionProductsHeadphones = () => {
     textContainerStyle += ` ${scss.sectionProductsHeadphonesMobile__textContainer}`;
     titleStyle += ` ${scss.sectionProductsHeadphonesMobile__title}`;
     descriptionStyle += ` ${scss.sectionProductsHeadphonesMobile__description}`;
+    newStyle += ` ${scss.sectionProductsHeadphonesMobile__new}`;
   }
 
   const data = useContext(DataContext);
   const productsInCategory = data
-    .filter(product => product.category === 'headphones')
+    .filter(product => product.category === category)
     .reverse();
-  console.log(productsInCategory);
 
   return (
     <section className={sectionProductsHeadphonesStyle}>
@@ -59,11 +62,12 @@ export const SectionProductsHeadphones = () => {
             }`}
             key={product.id}
           >
-            <div className={`product-${product.slug} ${imageStyle}`}></div>
+            <div className={`${scss[product.slug]} ${imageStyle}`}></div>
             <div className={textContainerStyle}>
+              {product.new && <div className={newStyle}>new product</div>}
               <h4 className={titleStyle}>{product.name}</h4>
               <p className={descriptionStyle}>{product.description}</p>
-              <LinkSeeOrange />
+              <LinkSeeOrange id={product.id} />
             </div>
           </div>
         ))}

@@ -8,13 +8,13 @@ export const NavLinksHeader = () => {
       <Link to="/home" className={scss.navLinksHeader__link}>
         HOME
       </Link>
-      <Link to="/headphones" className={scss.navLinksHeader__link}>
+      <Link to="/category/headphones" className={scss.navLinksHeader__link}>
         HEADPHONES
       </Link>
-      <Link to="/speakers" className={scss.navLinksHeader__link}>
+      <Link to="/category/speakers" className={scss.navLinksHeader__link}>
         SPEAKERS
       </Link>
-      <Link to="/earphones" className={scss.navLinksHeader__link}>
+      <Link to="/category/earphones" className={scss.navLinksHeader__link}>
         EARPHONES
       </Link>
     </div>

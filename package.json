@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://Astrix1234.github.io/Audiophile-ecommerce-website/",
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.20",
+    "@mui/material": "^5.15.2",
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",

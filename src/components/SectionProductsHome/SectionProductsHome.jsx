@@ -71,13 +71,13 @@ export const SectionProductsHome = () => {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <LinkSeeBlack />
+            <LinkSeeBlack id={6} />
           </div>
         </div>
         <div className={zx7Container}>
           <div className={scss.sectionProductsHome__zx7ContainerText}>
             <h4 className={scss.sectionProductsHome__zx7Title}>ZX7 SPEAKER</h4>
-            <LinkSeeTransparent />
+            <LinkSeeTransparent id={5} />
           </div>
         </div>
         <div className={yx1Container}>
@@ -87,7 +87,7 @@ export const SectionProductsHome = () => {
               <h4 className={scss.sectionProductsHome__yx1Title}>
                 YX1 EARPHONES
               </h4>
-              <LinkSeeTransparent />
+              <LinkSeeTransparent id={1} />
             </div>
           </div>
         </div>
