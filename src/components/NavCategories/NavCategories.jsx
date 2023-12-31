@@ -47,7 +47,7 @@ export const NavCategories = () => {
 
       <div className={itemStyle}>
         <img className={pictureStyle} src={speakersImage} alt="headphones" />
-        <p className={nameStyles}>HEADPHONES</p>
+        <p className={nameStyles}>SPEAKERS</p>
         <Link to="/category/speakers" className={scss.navCategories__link}>
           SHOP
           <IconArrow />
@@ -56,7 +56,7 @@ export const NavCategories = () => {
 
       <div className={itemStyle}>
         <img className={pictureStyle} src={earphonesImage} alt="headphones" />
-        <p className={nameStyles}>HEADPHONES</p>
+        <p className={nameStyles}>EARPHONES</p>
         <Link to="/category/earphones" className={scss.navCategories__link}>
           SHOP
           <IconArrow />
