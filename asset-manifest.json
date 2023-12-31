@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Audiophile-ecommerce-website/static/css/main.1498969b.css",
-    "main.js": "/Audiophile-ecommerce-website/static/js/main.e7bd1144.js",
+    "main.js": "/Audiophile-ecommerce-website/static/js/main.e9b5d699.js",
     "static/css/112.9953f0a2.chunk.css": "/Audiophile-ecommerce-website/static/css/112.9953f0a2.chunk.css",
     "static/js/112.2feee11e.chunk.js": "/Audiophile-ecommerce-website/static/js/112.2feee11e.chunk.js",
     "static/css/469.df06e216.chunk.css": "/Audiophile-ecommerce-website/static/css/469.df06e216.chunk.css",
@@ -19,7 +19,7 @@
     "static/media/image-earphones-yx1.jpg": "/Audiophile-ecommerce-website/static/media/image-earphones-yx1.48e16a44bd58ed3be41e.jpg",
     "index.html": "/Audiophile-ecommerce-website/index.html",
     "main.1498969b.css.map": "/Audiophile-ecommerce-website/static/css/main.1498969b.css.map",
-    "main.e7bd1144.js.map": "/Audiophile-ecommerce-website/static/js/main.e7bd1144.js.map",
+    "main.e9b5d699.js.map": "/Audiophile-ecommerce-website/static/js/main.e9b5d699.js.map",
     "112.9953f0a2.chunk.css.map": "/Audiophile-ecommerce-website/static/css/112.9953f0a2.chunk.css.map",
     "112.2feee11e.chunk.js.map": "/Audiophile-ecommerce-website/static/js/112.2feee11e.chunk.js.map",
     "469.df06e216.chunk.css.map": "/Audiophile-ecommerce-website/static/css/469.df06e216.chunk.css.map",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.1498969b.css",
-    "static/js/main.e7bd1144.js"
+    "static/js/main.e9b5d699.js"
   ]
 }
