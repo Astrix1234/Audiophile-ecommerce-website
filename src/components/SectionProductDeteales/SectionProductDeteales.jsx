@@ -21,6 +21,9 @@ export const SectionProductDeteales = ({ product }) => {
   let detealesContainerStyles = scss.sectionProducts__detealesContainer;
   let featuresStyle = scss.sectionProducts__features;
   let featuresTitleStyle;
+  let boxStyles = scss.sectionProducts__box;
+  let boxTitleStyle = scss.sectionProducts__boxTitle;
+  let boxItemStyles = scss.sectionProducts__boxItem;
 
   if (isDesktop) {
     sectionProductsStyle += ` ${scss.sectionProductsDesktop}`;
@@ -35,6 +38,9 @@ export const SectionProductDeteales = ({ product }) => {
     detealesContainerStyles += ` ${scss.sectionProductsDesktop__detealesContainer}`;
     featuresStyle += ` ${scss.sectionProductsDesktop__features}`;
     featuresTitleStyle = ` ${scss.sectionProductsDesktop__featuresTitle}`;
+    boxStyles += ` ${scss.sectionProductsDesktop__box}`;
+    boxTitleStyle += ` ${scss.sectionProductsDesktop__boxTitle}`;
+    boxItemStyles += ` ${scss.sectionProductsDesktop__boxItem}`;
   } else if (isTablet) {
     sectionProductsStyle += ` ${scss.sectionProductsTablet}`;
     containerStyle += ` ${scss.sectionProductsTablet__container}`;
@@ -48,6 +54,9 @@ export const SectionProductDeteales = ({ product }) => {
     detealesContainerStyles += ` ${scss.sectionProductsTablet__detealesContainer}`;
     featuresStyle += ` ${scss.sectionProductsTablet__features}`;
     featuresTitleStyle = ` ${scss.sectionProductsTablet__featuresTitle}`;
+    boxStyles += ` ${scss.sectionProductsTablet__box}`;
+    boxTitleStyle += ` ${scss.sectionProductsTablet__boxTitle}`;
+    boxItemStyles += ` ${scss.sectionProductsTablet__boxItem}`;
   } else if (isMobile) {
     sectionProductsStyle += ` ${scss.sectionProductsMobile}`;
     containerStyle += ` ${scss.sectionProductsMobile__container}`;
@@ -61,6 +70,9 @@ export const SectionProductDeteales = ({ product }) => {
     detealesContainerStyles += ` ${scss.sectionProductsMobile__detealesContainer}`;
     featuresStyle += ` ${scss.sectionProductsMobile__features}`;
     featuresTitleStyle = ` ${scss.sectionProductsMobile__featuresTitle}`;
+    boxStyles += ` ${scss.sectionProductsMobile__box}`;
+    boxTitleStyle += ` ${scss.sectionProductsMobile__boxTitle}`;
+    boxItemStyles += ` ${scss.sectionProductsMobile__boxItem}`;
   }
 
   return (
@@ -83,6 +95,21 @@ export const SectionProductDeteales = ({ product }) => {
               className={scss.sectionProducts__featuresDescription}
               dangerouslySetInnerHTML={{ __html: product.features }}
             ></p>
+          </div>
+          <div className={boxStyles}>
+            <h4 className={boxTitleStyle}>in the box</h4>
+            <div className={scss.sectionProducts__boxIncludes}>
+              {product.includes.map(item => (
+                <div className={boxItemStyles} key={nanoid()}>
+                  <p className={scss.sectionProducts__boxItemQuantity}>
+                    {item.quantity}x
+                  </p>
+                  <p className={scss.sectionProducts__boxItemText}>
+                    {item.item}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -56,6 +56,7 @@
 
     &__detealesContainer {
         width: 100%;
+        display: flex;
     }
 
     &__features {
@@ -69,10 +70,42 @@
         line-height: 25px;
         opacity: 0.5;
     }
+
+    &__box {
+        display: flex;
+    }
+
+    &__boxTitle {
+        text-transform: uppercase;
+    }
+
+    &__boxIncludes {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__boxItem {
+        display: flex;
+    }
+
+    &__boxItemQuantity {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 25px;
+        color: var(--orange);
+    }
+
+    &__boxItemText {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 25px;
+        opacity: 0.5;
+    }
 }
 
 .sectionProductsDesktop {
-    padding: 79px 0 160px 0;
+    padding: 79px 0 0 0;
 
     &__container {
         max-width: 1110px;
@@ -112,23 +145,34 @@
         margin-bottom: 47px;
     }
 
-    &__detealesContainer {}
+    &__detealesContainer {
+        gap: 125px;
+    }
 
     &__features {
         max-width: 635px;
     }
 
-    &__featuresTitle {
+    &__featuresTitle,
+    &__boxTitle {
         font-size: 32px;
         line-height: 36px;
         letter-spacing: 1.143px;
         margin-bottom: 32px;
     }
+
+    &__box {
+        flex-direction: column;
+    }
+
+    &__boxItem {
+        gap: 24px;
+    }
 }
 
 
 .sectionProductsTablet {
-    padding: 33px 0 120px 0;
+    padding: 33px 0 0 0;
 
     &__container {
         max-width: 689px;
@@ -171,22 +215,32 @@
         margin-bottom: 31px;
     }
 
-    &__detealesContainer {}
-
-    &__features {
-        margin-bottom: 120px;
+    &__detealesContainer {
+        flex-direction: column;
+        gap: 120px;
     }
 
-    &__featuresTitle {
+    &__features {}
+
+    &__featuresTitle,
+    &__boxTitle {
         font-size: 32px;
         line-height: 36px;
         letter-spacing: 1.143px;
         margin-bottom: 32px;
     }
+
+    &__box {
+        gap: 170px;
+    }
+
+    &__boxItem {
+        gap: 24px;
+    }
 }
 
 .sectionProductsMobile {
-    padding: 16px 0 88px 0;
+    padding: 16px 0 0 0;
 
     &__container {
         max-width: 327px;
@@ -226,17 +280,27 @@
         margin-bottom: 68px;
     }
 
-    &__detealesContainer {}
-
-    &__features {
-        margin-bottom: 120px;
+    &__detealesContainer {
+        flex-direction: column;
+        gap: 88px;
     }
 
-    &__featuresTitle {
+    &__features {}
+
+    &__featuresTitle,
+    &__boxTitle {
         font-size: 24px;
         line-height: 36px;
         letter-spacing: 0.857px;
         margin-bottom: 24px;
+    }
+
+    &__box {
+        flex-direction: column;
+    }
+
+    &__boxItem {
+        gap: 21px;
     }
 }
 
