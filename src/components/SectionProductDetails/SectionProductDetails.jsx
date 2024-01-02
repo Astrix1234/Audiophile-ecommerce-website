@@ -1,10 +1,13 @@
-import React from 'react';
-import scss from './SectionProductDeteales.module.scss';
+import React, { useState } from 'react';
+import scss from './SectionProductDetails.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { nanoid } from 'nanoid';
 import { ButtonAddToCart } from 'components/ButtonAddToCart/ButtonAddToCart';
+import { LinkGoBack } from 'components/LinkGoBack/LinkGoBack';
+import { Counter } from 'components/Counter/Counter';
 
-export const SectionProductDeteales = ({ product }) => {
+export const SectionProductDetails = ({ product }) => {
+  const [count, setCount] = useState(1);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -18,7 +21,7 @@ export const SectionProductDeteales = ({ product }) => {
   let descriptionStyle = scss.sectionProducts__description;
   let newStyle = scss.sectionProducts__new;
   let priceStyle = scss.sectionProducts__price;
-  let detealesContainerStyles = scss.sectionProducts__detealesContainer;
+  let detailsContainerStyles = scss.sectionProducts__detailsContainer;
   let featuresStyle = scss.sectionProducts__features;
   let featuresTitleStyle;
   let boxStyles = scss.sectionProducts__box;
@@ -35,7 +38,7 @@ export const SectionProductDeteales = ({ product }) => {
     descriptionStyle += ` ${scss.sectionProductsDesktop__description}`;
     newStyle += ` ${scss.sectionProductsDesktop__new}`;
     priceStyle += ` ${scss.sectionProductsDesktop__price}`;
-    detealesContainerStyles += ` ${scss.sectionProductsDesktop__detealesContainer}`;
+    detailsContainerStyles += ` ${scss.sectionProductsDesktop__detailsContainer}`;
     featuresStyle += ` ${scss.sectionProductsDesktop__features}`;
     featuresTitleStyle = ` ${scss.sectionProductsDesktop__featuresTitle}`;
     boxStyles += ` ${scss.sectionProductsDesktop__box}`;
@@ -51,8 +54,7 @@ export const SectionProductDeteales = ({ product }) => {
     descriptionStyle += ` ${scss.sectionProductsTablet__description}`;
     newStyle += ` ${scss.sectionProductsTablet__new}`;
     priceStyle += ` ${scss.sectionProductsTablet__price}`;
-    detealesContainerStyles += ` ${scss.sectionProductsTablet__detealesContainer}`;
-    featuresStyle += ` ${scss.sectionProductsTablet__features}`;
+    detailsContainerStyles += ` ${scss.sectionProductsTablet__detailsContainer}`;
     featuresTitleStyle = ` ${scss.sectionProductsTablet__featuresTitle}`;
     boxStyles += ` ${scss.sectionProductsTablet__box}`;
     boxTitleStyle += ` ${scss.sectionProductsTablet__boxTitle}`;
@@ -67,16 +69,49 @@ export const SectionProductDeteales = ({ product }) => {
     descriptionStyle += ` ${scss.sectionProductsMobile__description}`;
     newStyle += ` ${scss.sectionProductsMobile__new}`;
     priceStyle += ` ${scss.sectionProductsMobile__price}`;
-    detealesContainerStyles += ` ${scss.sectionProductsMobile__detealesContainer}`;
-    featuresStyle += ` ${scss.sectionProductsMobile__features}`;
+    detailsContainerStyles += ` ${scss.sectionProductsMobile__detailsContainer}`;
     featuresTitleStyle = ` ${scss.sectionProductsMobile__featuresTitle}`;
     boxStyles += ` ${scss.sectionProductsMobile__box}`;
     boxTitleStyle += ` ${scss.sectionProductsMobile__boxTitle}`;
     boxItemStyles += ` ${scss.sectionProductsMobile__boxItem}`;
   }
 
+  const formatPrice = price => {
+    return price.toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+  };
+
+  const handlePlus = () => {
+    setCount(count + 1);
+  };
+  const handleMinus = () => {
+    setCount(count - 1);
+    if (count <= 1) {
+      setCount(1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    if (products.find(p => p.id === product.id && p.count === count)) {
+      return;
+    } else if (products.find(p => p.id === product.id && p.count !== count)) {
+      const filteredProducts = products.filter(p => p.id !== product.id);
+      filteredProducts.push({ ...product, count });
+      localStorage.setItem('products', JSON.stringify(filteredProducts));
+    } else {
+      products.push({ ...product, count });
+      localStorage.setItem('products', JSON.stringify(products));
+    }
+  };
+
+  // localStorage.clear();
+
   return (
     <section className={sectionProductsStyle}>
+      <LinkGoBack />
       <div className={containerStyle}>
         <div className={productContainerStyle}>
           <div className={`${scss[product.slug]} ${imageStyle}`}></div>
@@ -84,11 +119,14 @@ export const SectionProductDeteales = ({ product }) => {
             {product.new && <div className={newStyle}>new product</div>}
             <h4 className={titleStyle}>{product.name}</h4>
             <p className={descriptionStyle}>{product.description}</p>
-            <p className={priceStyle}>$ {product.price}</p>
-            <ButtonAddToCart />
+            <p className={priceStyle}>$ {formatPrice(product.price)}</p>
+            <div className={scss.sectionProducts__buttonsContainer}>
+              <Counter count={count} minus={handleMinus} plus={handlePlus} />
+              <ButtonAddToCart onClick={handleAddToCart} />
+            </div>
           </div>
         </div>
-        <div className={detealesContainerStyles}>
+        <div className={detailsContainerStyles}>
           <div className={featuresStyle}>
             <h4 className={featuresTitleStyle}>FEATURES</h4>
             <p

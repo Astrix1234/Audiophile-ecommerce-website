@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { DataContext } from 'components/App';
 import { SectionNavCategories } from 'components/SectionNavCategories/SectionNavCategories';
 import { SectionAlsoLike } from 'components/SectionAlsoLike/SectionAlsoLike';
-import { SectionProductDeteales } from 'components/SectionProductDeteales/SectionProductDeteales';
+import { SectionProductDetails } from 'components/SectionProductDetails/SectionProductDetails';
 
 export default function Product() {
   const { slug } = useParams();
@@ -21,7 +21,7 @@ export default function Product() {
       <Helmet>
         <title>Product-${slug}</title>
       </Helmet>
-      <SectionProductDeteales product={product} />
+      <SectionProductDetails product={product} />
       <SectionAlsoLike product={product} />
       <SectionNavCategories />
     </>
