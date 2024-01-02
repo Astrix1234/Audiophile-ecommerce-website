@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import scss from './SectionProducts.module.scss';
+import React from 'react';
+import scss from './SectionProductDeteales.module.scss';
 import { useMediaQuery } from 'react-responsive';
-import { DataContext } from 'components/App';
-import { LinkSeeOrange } from 'components/LinkSeeOrange/LinkSeeOrange';
+import { nanoid } from 'nanoid';
+import { ButtonAddToCart } from 'components/ButtonAddToCart/ButtonAddToCart';
 
-export const SectionProducts = ({ category }) => {
+export const SectionProductDeteales = ({ product }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -17,6 +17,10 @@ export const SectionProducts = ({ category }) => {
   let titleStyle = scss.sectionProducts__title;
   let descriptionStyle = scss.sectionProducts__description;
   let newStyle = scss.sectionProducts__new;
+  let priceStyle = scss.sectionProducts__price;
+  let detealesContainerStyles = scss.sectionProducts__detealesContainer;
+  let featuresStyle = scss.sectionProducts__features;
+  let featuresTitleStyle;
 
   if (isDesktop) {
     sectionProductsStyle += ` ${scss.sectionProductsDesktop}`;
@@ -27,6 +31,10 @@ export const SectionProducts = ({ category }) => {
     titleStyle += ` ${scss.sectionProductsDesktop__title}`;
     descriptionStyle += ` ${scss.sectionProductsDesktop__description}`;
     newStyle += ` ${scss.sectionProductsDesktop__new}`;
+    priceStyle += ` ${scss.sectionProductsDesktop__price}`;
+    detealesContainerStyles += ` ${scss.sectionProductsDesktop__detealesContainer}`;
+    featuresStyle += ` ${scss.sectionProductsDesktop__features}`;
+    featuresTitleStyle = ` ${scss.sectionProductsDesktop__featuresTitle}`;
   } else if (isTablet) {
     sectionProductsStyle += ` ${scss.sectionProductsTablet}`;
     containerStyle += ` ${scss.sectionProductsTablet__container}`;
@@ -36,6 +44,10 @@ export const SectionProducts = ({ category }) => {
     titleStyle += ` ${scss.sectionProductsTablet__title}`;
     descriptionStyle += ` ${scss.sectionProductsTablet__description}`;
     newStyle += ` ${scss.sectionProductsTablet__new}`;
+    priceStyle += ` ${scss.sectionProductsTablet__price}`;
+    detealesContainerStyles += ` ${scss.sectionProductsTablet__detealesContainer}`;
+    featuresStyle += ` ${scss.sectionProductsTablet__features}`;
+    featuresTitleStyle = ` ${scss.sectionProductsTablet__featuresTitle}`;
   } else if (isMobile) {
     sectionProductsStyle += ` ${scss.sectionProductsMobile}`;
     containerStyle += ` ${scss.sectionProductsMobile__container}`;
@@ -45,32 +57,34 @@ export const SectionProducts = ({ category }) => {
     titleStyle += ` ${scss.sectionProductsMobile__title}`;
     descriptionStyle += ` ${scss.sectionProductsMobile__description}`;
     newStyle += ` ${scss.sectionProductsMobile__new}`;
+    priceStyle += ` ${scss.sectionProductsMobile__price}`;
+    detealesContainerStyles += ` ${scss.sectionProductsMobile__detealesContainer}`;
+    featuresStyle += ` ${scss.sectionProductsMobile__features}`;
+    featuresTitleStyle = ` ${scss.sectionProductsMobile__featuresTitle}`;
   }
-
-  const data = useContext(DataContext);
-  const productsInCategory = data
-    .filter(product => product.category === category)
-    .reverse();
 
   return (
     <section className={sectionProductsStyle}>
       <div className={containerStyle}>
-        {productsInCategory.map((product, index) => (
-          <div
-            className={`${productContainerStyle} ${
-              index % 2 !== 0 ? scss.reversed : ''
-            }`}
-            key={product.id}
-          >
-            <div className={`${scss[product.slug]} ${imageStyle}`}></div>
-            <div className={textContainerStyle}>
-              {product.new && <div className={newStyle}>new product</div>}
-              <h4 className={titleStyle}>{product.name}</h4>
-              <p className={descriptionStyle}>{product.description}</p>
-              <LinkSeeOrange slug={product.slug} />
-            </div>
+        <div className={productContainerStyle}>
+          <div className={`${scss[product.slug]} ${imageStyle}`}></div>
+          <div className={textContainerStyle}>
+            {product.new && <div className={newStyle}>new product</div>}
+            <h4 className={titleStyle}>{product.name}</h4>
+            <p className={descriptionStyle}>{product.description}</p>
+            <p className={priceStyle}>$ {product.price}</p>
+            <ButtonAddToCart />
           </div>
-        ))}
+        </div>
+        <div className={detealesContainerStyles}>
+          <div className={featuresStyle}>
+            <h4 className={featuresTitleStyle}>FEATURES</h4>
+            <p
+              className={scss.sectionProducts__featuresDescription}
+              dangerouslySetInnerHTML={{ __html: product.features }}
+            ></p>
+          </div>
+        </div>
       </div>
     </section>
   );
