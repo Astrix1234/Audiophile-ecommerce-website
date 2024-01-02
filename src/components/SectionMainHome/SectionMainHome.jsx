@@ -44,7 +44,7 @@ export const SectionMainHome = () => {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <LinkSeeOrange />
+          <LinkSeeOrange slug={'xx99-mark-two-headphones'} />
         </div>
       </div>
     </section>

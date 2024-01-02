@@ -11,7 +11,6 @@ export default function Product() {
   const data = useContext(DataContext);
 
   const product = data.find(p => p.slug === slug);
-  console.log(product);
 
   if (!product) {
     return <div>Product not found</div>;
