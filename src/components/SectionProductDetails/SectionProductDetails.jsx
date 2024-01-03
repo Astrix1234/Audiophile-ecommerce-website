@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import scss from './SectionProductDetails.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { nanoid } from 'nanoid';
 import { ButtonAddToCart } from 'components/ButtonAddToCart/ButtonAddToCart';
 import { LinkGoBack } from 'components/LinkGoBack/LinkGoBack';
 import { Counter } from 'components/Counter/Counter';
-import ProppTypes from 'prop-types';
+import { DataContext } from 'components/App';
+import PropTypes from 'prop-types';
 
 export const SectionProductDetails = ({ product }) => {
+  const { products, refreshProducts } = useContext(DataContext);
+
   const [count, setCount] = useState(1);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
@@ -85,26 +88,49 @@ export const SectionProductDetails = ({ product }) => {
   };
 
   const handlePlus = () => {
-    setCount(count + 1);
+    const newCount = count + 1;
+    setCount(newCount);
+
+    const existingProduct = products.find(p => p.id === product.id);
+
+    if (existingProduct) {
+      const updatedProducts = products.map(p =>
+        p.id === product.id ? { ...p, count: newCount } : p
+      );
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+      refreshProducts();
+    }
   };
   const handleMinus = () => {
-    setCount(count - 1);
+    const newCount = count > 1 ? count - 1 : 1;
+    setCount(newCount);
+
+    const existingProduct = products.find(p => p.id === product.id);
+
+    if (existingProduct && newCount >= 1) {
+      const updatedProducts = products.map(p =>
+        p.id === product.id ? { ...p, count: newCount } : p
+      );
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+      refreshProducts();
+    }
     if (count <= 1) {
       setCount(1);
     }
   };
 
   const handleAddToCart = () => {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
     if (products.find(p => p.id === product.id && p.count === count)) {
       return;
     } else if (products.find(p => p.id === product.id && p.count !== count)) {
       const filteredProducts = products.filter(p => p.id !== product.id);
       filteredProducts.push({ ...product, count });
       localStorage.setItem('products', JSON.stringify(filteredProducts));
+      refreshProducts();
     } else {
       products.push({ ...product, count });
       localStorage.setItem('products', JSON.stringify(products));
+      refreshProducts();
     }
   };
 
@@ -157,5 +183,5 @@ export const SectionProductDetails = ({ product }) => {
 };
 
 SectionProductDetails.propTypes = {
-  product: ProppTypes.object.isRequired,
+  product: PropTypes.object.isRequired,
 };

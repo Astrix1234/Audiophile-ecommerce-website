@@ -48,7 +48,7 @@ export const SectionProducts = ({ category }) => {
     newStyle += ` ${scss.sectionProductsMobile__new}`;
   }
 
-  const data = useContext(DataContext);
+  const { data } = useContext(DataContext);
   const productsInCategory = data
     .filter(product => product.category === category)
     .reverse();

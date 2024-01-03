@@ -1,0 +1,86 @@
+.modal {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+
+    &__cart {
+        width: 100%;
+        border-radius: 8px;
+        background-color: var(--light);
+    }
+
+    &__cartHeader {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__amount {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1.286px;
+        text-transform: uppercase;
+    }
+
+    &__btnClear {
+        background-color: transparent;
+        border: none;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 25px;
+        text-decoration-line: underline;
+        color: rgb(0, 0, 0, 0.5);
+        transition: color 0.3s ease-in-out;
+
+        &:hover,
+        &:focus {
+            color: var(--orange);
+            cursor: pointer;
+        }
+    }
+
+    &__productsContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 31px 0 32px 0;
+    }
+}
+
+.modalDesktop {
+    max-width: 1110px;
+
+    &__cart {
+        width: 377px;
+        height: 488px;
+        margin-left: auto;
+        margin-top: 32px;
+        padding: 32px 31px 31px 33px;
+    }
+}
+
+.modalTablet {
+    max-width: 689px;
+
+    &__cart {
+        width: 377px;
+        height: 488px;
+        margin-left: auto;
+        margin-top: 24px;
+        padding: 32px 31px 31px 33px;
+    }
+}
+
+
+.modalMobile {
+    max-width: 327px;
+
+    &__cart {
+        height: 488px;
+        margin-top: 24px;
+        padding: 32px 29px 31px 28px;
+    }
+}

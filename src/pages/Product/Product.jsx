@@ -9,7 +9,7 @@ import { SectionProductGallery } from 'components/SectionProductGallery/SectionP
 
 export default function Product() {
   const { slug } = useParams();
-  const data = useContext(DataContext);
+  const { data } = useContext(DataContext);
 
   const product = data.find(p => p.slug === slug);
 
