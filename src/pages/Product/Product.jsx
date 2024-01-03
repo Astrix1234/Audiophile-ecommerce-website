@@ -5,6 +5,7 @@ import { DataContext } from 'components/App';
 import { SectionNavCategories } from 'components/SectionNavCategories/SectionNavCategories';
 import { SectionAlsoLike } from 'components/SectionAlsoLike/SectionAlsoLike';
 import { SectionProductDetails } from 'components/SectionProductDetails/SectionProductDetails';
+import { SectionProductGallery } from 'components/SectionProductGallery/SectionProductGallery';
 
 export default function Product() {
   const { slug } = useParams();
@@ -22,6 +23,7 @@ export default function Product() {
         <title>Product-${slug}</title>
       </Helmet>
       <SectionProductDetails product={product} />
+      <SectionProductGallery product={product} />
       <SectionAlsoLike product={product} />
       <SectionNavCategories />
     </>
