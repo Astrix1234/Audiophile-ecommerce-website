@@ -1,6 +1,7 @@
 import React from 'react';
 import scss from './SectionCategoryTitle.module.scss';
 import { useMediaQuery } from 'react-responsive';
+import PropTypes from 'prop-types';
 
 export const SectionCategoryTitle = ({ title }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -27,4 +28,8 @@ export const SectionCategoryTitle = ({ title }) => {
       </div>
     </section>
   );
+};
+
+SectionCategoryTitle.propTypes = {
+  title: PropTypes.string.isRequired,
 };

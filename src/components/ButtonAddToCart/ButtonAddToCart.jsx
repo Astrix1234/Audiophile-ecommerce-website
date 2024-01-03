@@ -1,5 +1,6 @@
 import React from 'react';
 import scss from './ButtonAddToCart.module.scss';
+import PropTypes from 'prop-types';
 
 export const ButtonAddToCart = ({ onClick }) => {
   return (
@@ -9,4 +10,8 @@ export const ButtonAddToCart = ({ onClick }) => {
       </button>
     </>
   );
+};
+
+ButtonAddToCart.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };

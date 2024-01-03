@@ -1,6 +1,7 @@
 import React from 'react';
 import scss from './LinkSeeTransparent.module.scss';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const LinkSeeTransparent = ({ slug }) => {
   return (
@@ -10,4 +11,8 @@ export const LinkSeeTransparent = ({ slug }) => {
       </Link>
     </>
   );
+};
+
+LinkSeeTransparent.propTypes = {
+  slug: PropTypes.string.isRequired,
 };

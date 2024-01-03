@@ -1,5 +1,6 @@
 import React from 'react';
 import scss from './Counter.module.scss';
+import PropTypes from 'prop-types';
 
 export const Counter = ({ count, plus, minus }) => {
   return (
@@ -13,4 +14,10 @@ export const Counter = ({ count, plus, minus }) => {
       </button>
     </div>
   );
+};
+
+Counter.propTypes = {
+  count: PropTypes.number.isRequired,
+  plus: PropTypes.func.isRequired,
+  minus: PropTypes.func.isRequired,
 };

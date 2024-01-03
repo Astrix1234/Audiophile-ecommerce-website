@@ -3,6 +3,7 @@ import scss from './SectionProducts.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { DataContext } from 'components/App';
 import { LinkSeeOrange } from 'components/LinkSeeOrange/LinkSeeOrange';
+import PropTypes from 'prop-types';
 
 export const SectionProducts = ({ category }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -74,4 +75,8 @@ export const SectionProducts = ({ category }) => {
       </div>
     </section>
   );
+};
+
+SectionProducts.propTypes = {
+  category: PropTypes.string.isRequired,
 };

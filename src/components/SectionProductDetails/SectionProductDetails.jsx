@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import { ButtonAddToCart } from 'components/ButtonAddToCart/ButtonAddToCart';
 import { LinkGoBack } from 'components/LinkGoBack/LinkGoBack';
 import { Counter } from 'components/Counter/Counter';
+import ProppTypes from 'prop-types';
 
 export const SectionProductDetails = ({ product }) => {
   const [count, setCount] = useState(1);
@@ -153,4 +154,8 @@ export const SectionProductDetails = ({ product }) => {
       </div>
     </section>
   );
+};
+
+SectionProductDetails.propTypes = {
+  product: ProppTypes.object.isRequired,
 };

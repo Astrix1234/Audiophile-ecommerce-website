@@ -3,6 +3,7 @@ import scss from './SectionAlsoLike.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { LinkSeeOrange } from 'components/LinkSeeOrange/LinkSeeOrange';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 export const SectionAlsoLike = ({ product }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -48,4 +49,8 @@ export const SectionAlsoLike = ({ product }) => {
       </div>
     </section>
   );
+};
+
+SectionAlsoLike.propTypes = {
+  product: PropTypes.object.isRequired,
 };
