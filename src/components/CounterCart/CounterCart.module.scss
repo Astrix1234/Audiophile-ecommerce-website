@@ -2,8 +2,8 @@
     display: flex;
 
     &__button {
-        width: 40px;
-        height: 48px;
+        width: 32px;
+        height: 32px;
         background-color: var(--grey);
         border: none;
         font-size: 13px;
@@ -22,11 +22,15 @@
     }
 
     &__count {
-        width: 40px;
-        height: 48px;
+        width: 32px;
+        height: 32px;
         background-color: var(--grey);
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 }

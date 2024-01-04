@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import scss from './ModalCart.module.scss';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 import { CounterCart } from 'components/CounterCart/CounterCart';
 import { DataContext } from 'components/App';
 
@@ -66,9 +67,18 @@ export const ModalCart = () => {
         }
         return pr;
       });
-      refreshProducts();
       localStorage.setItem('products', JSON.stringify(newList));
+      refreshProducts();
     }
+  };
+
+  const calculateTotalPrice = cartProducts => {
+    const prices = [];
+    cartProducts.forEach(pr => {
+      prices.push(pr.price * pr.count);
+    });
+    const price = prices.reduce((a, b) => a + b, 0);
+    return formatPrice(price);
   };
 
   return (
@@ -87,11 +97,11 @@ export const ModalCart = () => {
         <div className={scss.modal__productsContainer}>
           {products.map(pr => (
             <div key={pr.id} className={scss.modal__product}>
-              <div className={scss.modalPrImageText}>
+              <div className={scss.modal__prImageText}>
                 <div
                   className={`${scss[pr.slug]} ${scss.modal__prImage}`}
                 ></div>
-                <div className={scss.modal__prText}>
+                <div>
                   <h4 className={scss.modal__prTitle}>{pr.shortName}</h4>
                   <p className={scss.modal__prPrice}>
                     $ {formatPrice(pr.price)}
@@ -105,7 +115,16 @@ export const ModalCart = () => {
               />
             </div>
           ))}
+          <div className={scss.modal__totalPrice}>
+            <p className={scss.modal__totalPriceText}>TOTAL</p>
+            <p className={scss.modal__totalPricePrice}>
+              $ {calculateTotalPrice(products)}
+            </p>
+          </div>
         </div>
+        <Link to="/checkout" className={scss.modal__btnCheckout}>
+          checkout
+        </Link>
       </div>
     </div>
   );
