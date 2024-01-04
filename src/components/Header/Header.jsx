@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import scss from './Header.module.scss';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo } from 'components/Logo/Logo';
 import { IconCard } from 'components/IconCard/IconCard';
 import { IconMenu } from 'components/IconMenu/IconMenu';
@@ -13,6 +13,9 @@ export const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
+
+  const location = useLocation();
+  const [prevLocation, setPrevLocation] = useState(location);
 
   const [isOpened, setIsOpened] = useState(false);
   const [isOpenedCart, setIsOpenedCart] = useState(false);
@@ -60,6 +63,13 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    if (isOpenedCart && prevLocation.pathname !== location.pathname) {
+      setIsOpenedCart(false);
+    }
+    setPrevLocation(location);
+  }, [location, prevLocation, isOpenedCart]);
+
+  useEffect(() => {
     const handleEscapeKeyCart = event => {
       if (isOpenedCart && event.key === 'Escape') {
         toggleCart();
@@ -89,7 +99,7 @@ export const Header = () => {
         </div>
       )}
       <div className={cartClasses} onClick={handleCartClick}>
-        <ModalCart />
+        <ModalCart onClick={handleCartClick} />
       </div>
     </header>
   );

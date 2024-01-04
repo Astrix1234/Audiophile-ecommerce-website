@@ -1,0 +1,39 @@
+.sectionCheckoutSummary {
+    &__container {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+    }
+}
+
+.sectionCheckoutSummaryDesktop {
+    padding: 91px 0 141px 0;
+
+    &__container {
+        max-width: 1110px;
+        justify-content: space-between;
+        margin-top: 37px;
+    }
+}
+
+.sectionCheckoutSummaryTablet {
+    padding: 48px 0 116px 0;
+
+    &__container {
+        flex-direction: column;
+        max-width: 689px;
+        gap: 32px;
+        margin-top: 24px;
+    }
+}
+
+.sectionCheckoutSummaryMobile {
+    padding: 16px 0 97px 0;
+
+    &__container {
+        flex-direction: column;
+        max-width: 327px;
+        gap: 32px;
+        margin-top: 24px;
+    }
+}

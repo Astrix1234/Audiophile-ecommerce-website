@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import scss from './ModalCart.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
-import { CounterCart } from 'components/CounterCart/CounterCart';
 import { DataContext } from 'components/App';
+import { CartProducts } from 'components/CartProducts/CartProducts';
+import PropTypes from 'prop-types';
 
-export const ModalCart = () => {
+export const ModalCart = ({ onClick }) => {
   const { products, refreshProducts } = useContext(DataContext);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -33,43 +34,9 @@ export const ModalCart = () => {
     });
   };
 
-  const handleDeleteProduct = productId => {
-    const newList = products.filter(pr => pr.id !== productId);
-    localStorage.setItem('products', JSON.stringify(newList));
-    refreshProducts();
-  };
-
   const handleDelete = () => {
     localStorage.removeItem('products');
     refreshProducts();
-  };
-
-  const handlePlus = productId => {
-    const newList = products.map(pr => {
-      if (pr.id === productId) {
-        return { ...pr, count: pr.count + 1 };
-      }
-      return pr;
-    });
-    localStorage.setItem('products', JSON.stringify(newList));
-    refreshProducts();
-  };
-
-  const handleMinus = productId => {
-    const product = products.find(pr => pr.id === productId);
-
-    if (product.count <= 1) {
-      handleDeleteProduct(productId);
-    } else {
-      const newList = products.map(pr => {
-        if (pr.id === productId) {
-          return { ...pr, count: pr.count - 1 };
-        }
-        return pr;
-      });
-      localStorage.setItem('products', JSON.stringify(newList));
-      refreshProducts();
-    }
   };
 
   const calculateTotalPrice = cartProducts => {
@@ -82,7 +49,7 @@ export const ModalCart = () => {
   };
 
   return (
-    <div className={modalStyle}>
+    <div className={modalStyle} onClick={onClick}>
       <div className={cartStyle}>
         <div className={scss.modal__cartHeader}>
           <p className={scss.modal__amount}>cart ({products.length})</p>
@@ -94,38 +61,25 @@ export const ModalCart = () => {
             Remove all
           </button>
         </div>
-        <div className={scss.modal__productsContainer}>
-          {products.map(pr => (
-            <div key={pr.id} className={scss.modal__product}>
-              <div className={scss.modal__prImageText}>
-                <div
-                  className={`${scss[pr.slug]} ${scss.modal__prImage}`}
-                ></div>
-                <div>
-                  <h4 className={scss.modal__prTitle}>{pr.shortName}</h4>
-                  <p className={scss.modal__prPrice}>
-                    $ {formatPrice(pr.price)}
-                  </p>
-                </div>
-              </div>
-              <CounterCart
-                count={pr.count}
-                minus={() => handleMinus(pr.id)}
-                plus={() => handlePlus(pr.id)}
-              />
-            </div>
-          ))}
-          <div className={scss.modal__totalPrice}>
-            <p className={scss.modal__totalPriceText}>TOTAL</p>
-            <p className={scss.modal__totalPricePrice}>
-              $ {calculateTotalPrice(products)}
-            </p>
-          </div>
+        <CartProducts products={products} />
+        <div className={scss.modal__totalPrice}>
+          <p className={scss.modal__totalPriceText}>TOTAL</p>
+          <p className={scss.modal__totalPricePrice}>
+            $ {calculateTotalPrice(products)}
+          </p>
         </div>
-        <Link to="/checkout" className={scss.modal__btnCheckout}>
+        <Link
+          to="/checkout"
+          className={scss.modal__btnCheckout}
+          onClick={onClick}
+        >
           checkout
         </Link>
       </div>
     </div>
   );
+};
+
+ModalCart.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };

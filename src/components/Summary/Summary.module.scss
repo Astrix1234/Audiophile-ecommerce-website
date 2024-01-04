@@ -1,0 +1,91 @@
+.summery {
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--light);
+    cursor: auto;
+
+
+    &__totalPrice,
+    &__shipping,
+    &__vat,
+    &__grandTotal {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    &__vat {
+        margin-bottom: 24px;
+    }
+
+    &__grandTotal {
+        margin-bottom: 32px;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1.286px;
+        text-transform: uppercase;
+    }
+
+    &__totalPriceText,
+    &__shippingText,
+    &__vatText,
+    &__grandTotalText {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 25px;
+        opacity: 0.5;
+    }
+
+    &__totalPricePrice,
+    &__shippingPrice,
+    &__vatPrice,
+    &__grandTotalPrice {
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    &__grandTotalPrice {
+        color: var(--orange);
+    }
+
+    &__button {
+        width: 100%;
+        height: 48px;
+        background-color: var(--orange);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--light);
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover,
+        &:focus {
+            background-color: var(--orange-light);
+            cursor: pointer;
+        }
+    }
+}
+
+.summeryDesktop {
+    padding: 32px 31px 31px 33px;
+    max-width: 350px;
+}
+
+.summeryTablet {
+    padding: 32px 31px 31px 33px;
+}
+
+.summeryMobile {
+    padding: 32px 29px 31px 28px;
+}

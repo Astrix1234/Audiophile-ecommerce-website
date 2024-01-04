@@ -12,6 +12,7 @@ export const SectionProductDetails = ({ product }) => {
   const { products, refreshProducts } = useContext(DataContext);
 
   const [count, setCount] = useState(1);
+
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -133,8 +134,6 @@ export const SectionProductDetails = ({ product }) => {
       refreshProducts();
     }
   };
-
-  // localStorage.clear();
 
   return (
     <section className={sectionProductsStyle}>
