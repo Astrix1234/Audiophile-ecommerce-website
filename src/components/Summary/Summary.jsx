@@ -5,7 +5,7 @@ import { DataContext } from 'components/App';
 import { CartProductsCheckout } from 'components/CartProductsCheckout/CartProductsCheckout';
 import PropTypes from 'prop-types';
 
-export const Summery = () => {
+export const Summery = ({ onClick }) => {
   const { products } = useContext(DataContext);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -50,8 +50,6 @@ export const Summery = () => {
     return sum;
   };
 
-  const openThanksModal = () => {};
-
   return (
     <div className={summeryStyle}>
       <h4 className={scss.summery__title}>summary</h4>
@@ -78,11 +76,7 @@ export const Summery = () => {
           $ {formatPrice(calculateGrandTotal(products))}
         </p>
       </div>
-      <button
-        type="button"
-        className={scss.summery__button}
-        onClick={openThanksModal}
-      >
+      <button type="button" className={scss.summery__button} onClick={onClick}>
         CONTINUE
       </button>
     </div>

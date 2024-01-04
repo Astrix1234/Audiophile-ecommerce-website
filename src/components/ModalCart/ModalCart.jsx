@@ -62,19 +62,23 @@ export const ModalCart = ({ onClick }) => {
           </button>
         </div>
         <CartProducts products={products} />
-        <div className={scss.modal__totalPrice}>
-          <p className={scss.modal__totalPriceText}>TOTAL</p>
-          <p className={scss.modal__totalPricePrice}>
-            $ {calculateTotalPrice(products)}
-          </p>
-        </div>
-        <Link
-          to="/checkout"
-          className={scss.modal__btnCheckout}
-          onClick={onClick}
-        >
-          checkout
-        </Link>
+        {products.length !== 0 && (
+          <div className={scss.modal__totalPrice}>
+            <p className={scss.modal__totalPriceText}>TOTAL</p>
+            <p className={scss.modal__totalPricePrice}>
+              $ {calculateTotalPrice(products)}
+            </p>
+          </div>
+        )}
+        {products.length !== 0 && (
+          <Link
+            to="/checkout"
+            className={scss.modal__btnCheckout}
+            onClick={onClick}
+          >
+            checkout
+          </Link>
+        )}
       </div>
     </div>
   );
