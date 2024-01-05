@@ -5,84 +5,59 @@ import { DataContext } from 'components/App';
 import { CartProductsCheckout } from 'components/CartProductsCheckout/CartProductsCheckout';
 import PropTypes from 'prop-types';
 
-export const Summery = ({ onClick }) => {
+export const Summary = ({ onClick, grandTotal, totalPrice, vat, disabled }) => {
   const { products } = useContext(DataContext);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
 
-  let summeryStyle = scss.summery;
+  let summaryStyle = scss.summary;
 
   if (isDesktop) {
-    summeryStyle += ` ${scss.summeryDesktop}`;
+    summaryStyle += ` ${scss.summaryDesktop}`;
   } else if (isTablet) {
-    summeryStyle += ` ${scss.summeryTablet}`;
+    summaryStyle += ` ${scss.summaryTablet}`;
   } else if (isMobile) {
-    summeryStyle += ` ${scss.summeryMobile}`;
+    summaryStyle += ` ${scss.summaryMobile}`;
   }
 
-  const formatPrice = price => {
-    return price.toLocaleString('en-US', {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-  };
-
-  const calculateTotalPrice = cartProducts => {
-    const prices = [];
-    cartProducts.forEach(pr => {
-      prices.push(pr.price * pr.count);
-    });
-    const price = prices.reduce((a, b) => a + b, 0);
-    return price;
-  };
-
-  const calculateVat = cartProducts => {
-    const price = calculateTotalPrice(cartProducts);
-    const vat = price * 0.2;
-    return vat;
-  };
-
-  const calculateGrandTotal = cartProducts => {
-    const sum =
-      calculateTotalPrice(cartProducts) + calculateVat(cartProducts) + 50;
-    return sum;
-  };
-
   return (
-    <div className={summeryStyle}>
-      <h4 className={scss.summery__title}>summary</h4>
+    <div className={summaryStyle}>
+      <h4 className={scss.summary__title}>summary</h4>
       <CartProductsCheckout products={products} />
-      <div className={scss.summery__totalPrice}>
-        <p className={scss.summery__totalPriceText}>TOTAL</p>
-        <p className={scss.summery__totalPricePrice}>
-          $ {formatPrice(calculateTotalPrice(products))}
-        </p>
+      <div className={scss.summary__totalPrice}>
+        <p className={scss.summary__totalPriceText}>TOTAL</p>
+        <p className={scss.summary__totalPricePrice}>{totalPrice}</p>
       </div>
-      <div className={scss.summery__shipping}>
-        <p className={scss.summery__shippingText}>SHIPPING</p>
-        <p className={scss.summery__shippingPrice}>$ 50</p>
+      <div className={scss.summary__shipping}>
+        <p className={scss.summary__shippingText}>SHIPPING</p>
+        <p className={scss.summary__shippingPrice}>$ 50</p>
       </div>
-      <div className={scss.summery__vat}>
-        <p className={scss.summery__vatText}>VAT (INCLUDED)</p>
-        <p className={scss.summery__vatPrice}>
-          $ {formatPrice(calculateVat(products))}
-        </p>
+      <div className={scss.summary__vat}>
+        <p className={scss.summary__vatText}>VAT (INCLUDED)</p>
+        <p className={scss.summary__vatPrice}>{vat}</p>
       </div>
-      <div className={scss.summery__grandTotal}>
-        <p className={scss.summery__grandTotalText}>GRAND TOTAL</p>
-        <p className={scss.summery__grandTotalPrice}>
-          $ {formatPrice(calculateGrandTotal(products))}
-        </p>
+      <div className={scss.summary__grandTotal}>
+        <p className={scss.summary__grandTotalText}>GRAND TOTAL</p>
+        <p className={scss.summary__grandTotalPrice}>{grandTotal}</p>
       </div>
-      <button type="button" className={scss.summery__button} onClick={onClick}>
+      <button
+        type="submit"
+        className={scss.summary__button}
+        onClick={onClick}
+        disabled={disabled}
+      >
         CONTINUE
       </button>
     </div>
   );
 };
 
-Summery.propTypes = {
+Summary.propTypes = {
   onClick: PropTypes.func.isRequired,
+  grandTotal: PropTypes.string.isRequired,
+  totalPrice: PropTypes.string.isRequired,
+  vat: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };

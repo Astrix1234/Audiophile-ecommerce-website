@@ -1,12 +1,15 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useContext } from 'react';
 import scss from './SectionCheckoutSummary.module.scss';
+import { DataContext } from 'components/App';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { LinkGoBack } from 'components/LinkGoBack/LinkGoBack';
-import { Summery } from 'components/Summary/Summary';
+import { Summary } from 'components/Summary/Summary';
+import { ModalThanks } from 'components/ModalThanks/ModalThanks';
 
 export const SectionCheckoutSummary = () => {
   const [isOpened, setIsOpened] = useState(false);
+  const { products, refreshProducts } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -40,6 +43,8 @@ export const SectionCheckoutSummary = () => {
     if (event.currentTarget === event.target) {
       toggleThanks();
       navigate('/home');
+      localStorage.removeItem('products');
+      refreshProducts();
     }
   };
 
@@ -48,6 +53,8 @@ export const SectionCheckoutSummary = () => {
       if (isOpened && event.key === 'Escape') {
         toggleThanks();
         navigate('/home');
+        localStorage.removeItem('products');
+        refreshProducts();
       }
     };
     if (isOpened) {
@@ -56,15 +63,55 @@ export const SectionCheckoutSummary = () => {
     return () => {
       document.removeEventListener('keydown', handleEscapeKeyThanks);
     };
-  }, [isOpened, toggleThanks, navigate]);
+  }, [isOpened, toggleThanks, navigate, refreshProducts]);
+
+  const formatPrice = price => {
+    return `$ ${price.toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })}`;
+  };
+
+  const calculateTotalPrice = cartProducts => {
+    const prices = [];
+    cartProducts.forEach(pr => {
+      prices.push(pr.price * pr.count);
+    });
+    const price = prices.reduce((a, b) => a + b, 0);
+    return price;
+  };
+
+  const calculateVat = cartProducts => {
+    const price = calculateTotalPrice(cartProducts);
+    const vat = price * 0.2;
+    return vat;
+  };
+
+  const calculateGrandTotal = cartProducts => {
+    const sum =
+      calculateTotalPrice(cartProducts) + calculateVat(cartProducts) + 50;
+    return sum;
+  };
 
   return (
     <section className={sectionCheckoutSummaryStyle}>
       <LinkGoBack />
-      <div className={containerStyle}>
-        <Summery onClick={toggleThanks} />
-        <div className={thanksClasses} onClick={handleThanksClick}></div>
-      </div>
+      <form className={containerStyle}>
+        <Summary
+          onClick={toggleThanks}
+          totalPrice={formatPrice(calculateTotalPrice(products))}
+          grandTotal={formatPrice(calculateGrandTotal(products))}
+          vat={formatPrice(calculateVat(products))}
+          disabled={calculateTotalPrice(products) === 0}
+        />
+        <div className={thanksClasses} onClick={handleThanksClick}>
+          <ModalThanks
+            products={products}
+            grandTotal={formatPrice(calculateGrandTotal(products))}
+            button={'text'}
+          />
+        </div>
+      </form>
     </section>
   );
 };

@@ -1,4 +1,4 @@
-.summery {
+.summary {
     width: 100%;
     border-radius: 8px;
     background-color: var(--light);
@@ -16,6 +16,10 @@
         margin-bottom: 8px;
     }
 
+    &__totalPrice {
+        margin-top: 32px;
+    }
+
     &__vat {
         margin-bottom: 24px;
     }
@@ -29,6 +33,7 @@
         font-weight: 700;
         letter-spacing: 1.286px;
         text-transform: uppercase;
+        margin-bottom: 31px;
     }
 
     &__totalPriceText,
@@ -74,18 +79,23 @@
             background-color: var(--orange-light);
             cursor: pointer;
         }
+
+        &:disabled {
+            background-color: var(--orange-light);
+            cursor: not-allowed;
+        }
     }
 }
 
-.summeryDesktop {
+.summaryDesktop {
     padding: 32px 31px 31px 33px;
     max-width: 350px;
 }
 
-.summeryTablet {
+.summaryTablet {
     padding: 32px 31px 31px 33px;
 }
 
-.summeryMobile {
+.summaryMobile {
     padding: 32px 29px 31px 28px;
 }

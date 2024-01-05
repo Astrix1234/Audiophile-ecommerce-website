@@ -2,7 +2,7 @@ import React from 'react';
 import scss from './CartProductsCheckout.module.scss';
 import PropTypes from 'prop-types';
 
-export const CartProductsCheckout = ({ products }) => {
+export const CartProductsCheckout = ({ products, style }) => {
   const formatPrice = price => {
     return price.toLocaleString('en-US', {
       minimumFractionDigits: 0,
@@ -11,7 +11,7 @@ export const CartProductsCheckout = ({ products }) => {
   };
 
   return (
-    <div className={scss.products}>
+    <div className={`${scss.products} ${style}`}>
       {products.map(pr => (
         <div key={pr.id} className={scss.products__product}>
           <div className={scss.products__prImageText}>
