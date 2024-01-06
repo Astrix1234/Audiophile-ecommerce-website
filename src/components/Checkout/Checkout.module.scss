@@ -1,0 +1,157 @@
+.checkout {
+    background-color: var(--light);
+    border-radius: 8px;
+    width: 100%;
+
+    &__title {
+        text-transform: uppercase;
+    }
+
+    &__inputsContainerMain {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__checkoutDescription {
+        color: var(--orange);
+        font-size: 13px;
+        line-height: 25px;
+        letter-spacing: 0.929px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+
+    &__inputsContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__inputsContainer2 {
+        display: flex;
+        width: 100%;
+    }
+
+    &__inputsContainer3 {
+        width: 100%;
+    }
+
+    &__label {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: -0.214px;
+
+        &:hover .checkout__input,
+        &:focus-within .checkout__input {
+            border: 1px solid var(--orange);
+        }
+    }
+
+    &__input {
+        margin-top: 9px;
+        border-radius: 8px;
+        border: 1px solid #CFCFCF;
+        background-color: var(--light);
+        outline: none;
+        height: 56px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.25px;
+        padding-left: 24px;
+        transition: border 0.3s ease-in-out;
+    }
+}
+
+.checkoutDesktop {
+    padding: 54px 48px 48px 48px;
+
+    &__title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: 1.143px;
+        margin-bottom: 41px;
+    }
+
+    &__inputsContainerMain {
+        gap: 53px;
+    }
+
+    &__inputsContainer {
+        gap: 24px;
+    }
+
+    &__inputsContainer2 {
+        gap: 16px;
+    }
+
+    &__inputsContainer3 {
+        max-width: 309px;
+    }
+}
+
+.checkoutTablet {
+    padding: 30px 27px 30px 28px;
+
+    &__title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: 1.143px;
+        margin-bottom: 41px;
+    }
+
+    &__inputsContainerMain {
+        gap: 53px;
+    }
+
+    &__inputsContainer {
+        gap: 24px;
+    }
+
+    &__inputsContainer2 {
+        gap: 16px;
+    }
+}
+
+
+.checkoutMobile {
+    padding: 24px 24px 31px 23px;
+
+    &__title {
+        font-size: 28px;
+        letter-spacing: 1px;
+        margin-bottom: 32px;
+    }
+
+    &__inputsContainerMain {
+        gap: 32px;
+    }
+
+    &__inputsContainer {
+        gap: 24px;
+    }
+
+    &__inputsContainer2 {
+        flex-direction: column;
+        gap: 24px;
+    }
+}
+
+.errorInput {
+    border: 2px solid #CD2C2C;
+}
+
+.errorLabel {
+    color: #CD2C2C;
+}
+
+.formikMessage {
+    position: absolute;
+    right: 0;
+    color: #CD2C2C;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.214px;
+}

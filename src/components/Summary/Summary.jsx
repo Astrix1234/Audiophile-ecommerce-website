@@ -5,7 +5,7 @@ import { DataContext } from 'components/App';
 import { CartProductsCheckout } from 'components/CartProductsCheckout/CartProductsCheckout';
 import PropTypes from 'prop-types';
 
-export const Summary = ({ onClick, grandTotal, totalPrice, vat, disabled }) => {
+export const Summary = ({ grandTotal, totalPrice, vat, disabled }) => {
   const { products } = useContext(DataContext);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -45,7 +45,6 @@ export const Summary = ({ onClick, grandTotal, totalPrice, vat, disabled }) => {
       <button
         type="submit"
         className={scss.summary__button}
-        onClick={onClick}
         disabled={disabled}
       >
         CONTINUE
@@ -55,7 +54,6 @@ export const Summary = ({ onClick, grandTotal, totalPrice, vat, disabled }) => {
 };
 
 Summary.propTypes = {
-  onClick: PropTypes.func.isRequired,
   grandTotal: PropTypes.string.isRequired,
   totalPrice: PropTypes.string.isRequired,
   vat: PropTypes.string.isRequired,

@@ -4,11 +4,15 @@ import { DataContext } from 'components/App';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { LinkGoBack } from 'components/LinkGoBack/LinkGoBack';
+import { useFormik } from 'formik';
+import { validationSchema } from './validationSchema';
+import { Checkout } from 'components/Checkout/Checkout';
 import { Summary } from 'components/Summary/Summary';
 import { ModalThanks } from 'components/ModalThanks/ModalThanks';
 
 export const SectionCheckoutSummary = () => {
   const [isOpened, setIsOpened] = useState(false);
+  const [formValid, setFormValid] = useState(false);
   const { products, refreshProducts } = useContext(DataContext);
 
   const navigate = useNavigate();
@@ -84,7 +88,7 @@ export const SectionCheckoutSummary = () => {
   const calculateVat = cartProducts => {
     const price = calculateTotalPrice(cartProducts);
     const vat = price * 0.2;
-    return vat;
+    return Math.round(vat);
   };
 
   const calculateGrandTotal = cartProducts => {
@@ -93,22 +97,54 @@ export const SectionCheckoutSummary = () => {
     return sum;
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      phone: '',
+      totalPrice: calculateTotalPrice(products),
+      grandTotal: calculateGrandTotal(products),
+      vat: calculateVat(products),
+      products: products,
+    },
+    validationSchema: validationSchema,
+    onSubmit: values => {
+      console.log(values);
+      toggleThanks();
+    },
+  });
+
   return (
     <section className={sectionCheckoutSummaryStyle}>
       <LinkGoBack />
-      <form className={containerStyle}>
+      <form className={containerStyle} onSubmit={formik.handleSubmit}>
+        <Checkout setFormValid={setFormValid} formik={formik} />
+        <input
+          type="hidden"
+          name="totalPrice"
+          value={formik.values.totalPrice}
+        />
+        <input
+          type="hidden"
+          name="grandTotal"
+          value={formik.values.grandTotal}
+        />
+        <input type="hidden" name="vat" value={formik.values.vat} />
+        <input
+          type="hidden"
+          name="products"
+          value={JSON.stringify(formik.values.products)}
+        />
         <Summary
-          onClick={toggleThanks}
-          totalPrice={formatPrice(calculateTotalPrice(products))}
-          grandTotal={formatPrice(calculateGrandTotal(products))}
-          vat={formatPrice(calculateVat(products))}
-          disabled={calculateTotalPrice(products) === 0}
+          totalPrice={formatPrice(formik.values.totalPrice)}
+          grandTotal={formatPrice(formik.values.grandTotal)}
+          vat={formatPrice(formik.values.vat)}
+          disabled={calculateTotalPrice(products) === 0 || !formValid}
         />
         <div className={thanksClasses} onClick={handleThanksClick}>
           <ModalThanks
             products={products}
             grandTotal={formatPrice(calculateGrandTotal(products))}
-            button={'text'}
           />
         </div>
       </form>
