@@ -1,6 +1,5 @@
-// import React, { useState, lazy, useEffect } from 'react';
 import React, { createContext, lazy, useState, useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import data from '../data.json';
 
@@ -13,6 +12,11 @@ export const DataContext = createContext();
 
 export const App = () => {
   const [products, setProducts] = useState([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   useEffect(() => {
     const productsFromStorage =

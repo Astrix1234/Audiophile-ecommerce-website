@@ -63,6 +63,20 @@
         padding-left: 24px;
         transition: border 0.3s ease-in-out;
     }
+
+    &__descriptionPayment {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    &__descriptionPaymentText {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 25px;
+        opacity: 0.5;
+        margin-left: 34px;
+    }
 }
 
 .checkoutDesktop {
@@ -77,6 +91,7 @@
 
     &__inputsContainerMain {
         gap: 53px;
+        margin-bottom: 61px;
     }
 
     &__inputsContainer {
@@ -104,6 +119,7 @@
 
     &__inputsContainerMain {
         gap: 53px;
+        margin-bottom: 61px;
     }
 
     &__inputsContainer {
@@ -127,6 +143,7 @@
 
     &__inputsContainerMain {
         gap: 32px;
+        margin-bottom: 32px;
     }
 
     &__inputsContainer {

@@ -2,7 +2,7 @@ import React from 'react';
 
 export const IconConfirm = () => {
   return (
-    <>
+    <div>
       <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fillRule="evenodd">
           <circle fill="#D87D4A" cx="32" cy="32" r="32" />
@@ -13,6 +13,6 @@ export const IconConfirm = () => {
           />
         </g>
       </svg>
-    </>
+    </div>
   );
 };

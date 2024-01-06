@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import scss from './Checkout.module.scss';
 import { useMediaQuery } from 'react-responsive';
+import { IconCash } from 'components/IconCash/IconCash';
 import PropTypes from 'prop-types';
 
 export const Checkout = ({ setFormValid, formik }) => {
@@ -133,9 +134,129 @@ export const Checkout = ({ setFormValid, formik }) => {
             </label>
           </div>
         </div>
-        <h4 className={scss.checkout__checkoutDescription}>shipping info</h4>
+        <div className={inputsContainerStyle}>
+          <h4 className={scss.checkout__checkoutDescription}>shipping info</h4>
+          <label
+            className={`${scss.checkout__label} ${
+              formik.touched.address && formik.errors.address
+                ? scss.errorLabel
+                : ''
+            }`}
+            htmlFor="address"
+          >
+            Address
+            <input
+              className={`${scss.checkout__input} ${
+                formik.touched.address && formik.errors.address
+                  ? scss.errorInput
+                  : ''
+              }`}
+              type="text"
+              id="address"
+              placeholder="1137 Williams Avenue"
+              onChange={formik.handleChange}
+              value={formik.values.address}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.address && formik.errors.address ? (
+              <div className={scss.formikMessage}>{formik.errors.address}</div>
+            ) : null}
+          </label>
+          <div className={inputsContainer2Style}>
+            <label
+              className={`${scss.checkout__label} ${
+                formik.touched.zipCode && formik.errors.zipCode
+                  ? scss.errorLabel
+                  : ''
+              }`}
+              htmlFor="zipCode"
+            >
+              ZIP Code
+              <input
+                className={`${scss.checkout__input} ${
+                  formik.touched.zipCode && formik.errors.zipCode
+                    ? scss.errorInput
+                    : ''
+                }`}
+                type="text"
+                id="zipCode"
+                placeholder="10001"
+                onChange={formik.handleChange}
+                value={formik.values.zipCode}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.zipCode && formik.errors.zipCode ? (
+                <div className={scss.formikMessage}>
+                  {formik.errors.zipCode}
+                </div>
+              ) : null}
+            </label>
+            <label
+              className={`${scss.checkout__label} ${
+                formik.touched.city && formik.errors.city ? scss.errorLabel : ''
+              }`}
+              htmlFor="city"
+            >
+              City
+              <input
+                className={`${scss.checkout__input} ${
+                  formik.touched.city && formik.errors.city
+                    ? scss.errorInput
+                    : ''
+                }`}
+                type="text"
+                id="city"
+                placeholder="New York"
+                onChange={formik.handleChange}
+                value={formik.values.city}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.city && formik.errors.city ? (
+                <div className={scss.formikMessage}>{formik.errors.city}</div>
+              ) : null}
+            </label>
+          </div>
+          <div className={inputsContainer3Style}>
+            <label
+              className={`${scss.checkout__label} ${
+                formik.touched.country && formik.errors.country
+                  ? scss.errorLabel
+                  : ''
+              }`}
+              htmlFor="country"
+            >
+              Country
+              <input
+                className={`${scss.checkout__input} ${
+                  formik.touched.country && formik.errors.country
+                    ? scss.errorInput
+                    : ''
+                }`}
+                type="text"
+                id="country"
+                placeholder="United States"
+                onChange={formik.handleChange}
+                value={formik.values.country}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.country && formik.errors.country ? (
+                <div className={scss.formikMessage}>
+                  {formik.errors.country}
+                </div>
+              ) : null}
+            </label>
+          </div>
+        </div>
       </div>
       <h4 className={scss.checkout__checkoutDescription}>payment details</h4>
+      <div className={scss.checkout__descriptionPayment}>
+        <IconCash />
+        <p className={scss.checkout__descriptionPaymentText}>
+          The ‘Cash on Delivery’ option enables you to pay in cash when our
+          delivery courier arrives at your residence. Just make sure your
+          address is correct so that your order will not be cancelled.
+        </p>
+      </div>
     </div>
   );
 };

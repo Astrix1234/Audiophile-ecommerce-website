@@ -9,4 +9,19 @@ export const validationSchema = Yup.object({
   phone: Yup.string()
     .matches(/^\+\d{1,2} \d{3} \d{3} \d{3}$/, 'Wrong format')
     .required('Is required'),
+  address: Yup.string()
+    .min(2, 'Minimum 2 characters')
+    .max(25, 'Maximum 25 characters')
+    .required('Is required'),
+  zipCode: Yup.string()
+    .matches(/^\d{2}-?\d{3}$/, 'Wrong format')
+    .required('Is required'),
+  city: Yup.string()
+    .min(2, 'Minimum 2 characters')
+    .max(25, 'Maximum 25 characters')
+    .required('Is required'),
+  country: Yup.string()
+    .min(2, 'Minimum 2 characters')
+    .max(25, 'Maximum 25 characters')
+    .required('Is required'),
 });
