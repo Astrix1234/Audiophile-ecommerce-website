@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import scss from './Checkout.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { IconCash } from 'components/IconCash/IconCash';
 import PropTypes from 'prop-types';
 
 export const Checkout = ({ setFormValid, formik }) => {
+  const [isMoney, setIsMoney] = useState(true);
+  const [isCash, setIsCash] = useState(false);
+
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ minWidth: 1280 });
@@ -15,6 +18,8 @@ export const Checkout = ({ setFormValid, formik }) => {
   let inputsContainerStyle = scss.checkout__inputsContainer;
   let inputsContainer2Style = scss.checkout__inputsContainer2;
   let inputsContainer3Style = scss.checkout__inputsContainer3;
+  let paymentContainerStyle = scss.checkout__paymentContainer;
+  let paymentMethodsContainerStyle = scss.checkout__paymentMethodsContainer;
 
   if (isDesktop) {
     checkoutStyle += ` ${scss.checkoutDesktop}`;
@@ -23,18 +28,24 @@ export const Checkout = ({ setFormValid, formik }) => {
     inputsContainerStyle += ` ${scss.checkoutDesktop__inputsContainer}`;
     inputsContainer2Style += ` ${scss.checkoutDesktop__inputsContainer2}`;
     inputsContainer3Style += ` ${scss.checkoutDesktop__inputsContainer3}`;
+    paymentContainerStyle += ` ${scss.checkoutDesktop__paymentContainer}`;
+    paymentMethodsContainerStyle += ` ${scss.checkoutDesktop__paymentMethodsContainer}`;
   } else if (isTablet) {
     checkoutStyle += ` ${scss.checkoutTablet}`;
     titleStyle += ` ${scss.checkoutTablet__title}`;
     inputsContainerMainStyle += ` ${scss.checkoutTablet__inputsContainerMain}`;
     inputsContainerStyle += ` ${scss.checkoutTablet__inputsContainer}`;
     inputsContainer2Style += ` ${scss.checkoutTablet__inputsContainer2}`;
+    inputsContainer3Style += ` ${scss.checkoutTablet__inputsContainer3}`;
+    paymentContainerStyle += ` ${scss.checkoutTablet__paymentContainer}`;
+    paymentMethodsContainerStyle += ` ${scss.checkoutTablet__paymentMethodsContainer}`;
   } else if (isMobile) {
     checkoutStyle += ` ${scss.checkoutMobile}`;
     titleStyle += ` ${scss.checkoutMobile__title}`;
     inputsContainerMainStyle += ` ${scss.checkoutMobile__inputsContainerMain}`;
     inputsContainerStyle += ` ${scss.checkoutMobile__inputsContainer}`;
     inputsContainer2Style += ` ${scss.checkoutMobile__inputsContainer2}`;
+    inputsContainer3Style += ` ${scss.checkoutMobile__inputsContainer3}`;
   }
 
   useEffect(() => {
@@ -44,6 +55,11 @@ export const Checkout = ({ setFormValid, formik }) => {
     setFormValid(formik.isValid && everyFieldTouched && anyFieldTouched);
     // eslint-disable-next-line
   }, [formik.isValid, formik.touched, setFormValid]);
+
+  const handleRadioChange = () => {
+    setIsMoney(!isMoney);
+    setIsCash(!isCash);
+  };
 
   return (
     <div className={checkoutStyle}>
@@ -249,14 +265,118 @@ export const Checkout = ({ setFormValid, formik }) => {
         </div>
       </div>
       <h4 className={scss.checkout__checkoutDescription}>payment details</h4>
-      <div className={scss.checkout__descriptionPayment}>
-        <IconCash />
-        <p className={scss.checkout__descriptionPaymentText}>
-          The ‘Cash on Delivery’ option enables you to pay in cash when our
-          delivery courier arrives at your residence. Just make sure your
-          address is correct so that your order will not be cancelled.
-        </p>
+      <div className={paymentContainerStyle}>
+        <h4 className={scss.checkout__methodTitle}>Payment Method</h4>
+        <div className={paymentMethodsContainerStyle}>
+          <label
+            className={`${scss.checkout__labelRadio} ${
+              isMoney ? scss.checkout__labelRadioMoneyChecked : ''
+            }`}
+            htmlFor="eMoney"
+          >
+            <input
+              className={scss.checkout__radioVisuallyHidden}
+              type="radio"
+              name="payment"
+              value="eMoney"
+              id="eMoney"
+              checked={isMoney}
+              onChange={handleRadioChange}
+            />
+            <div className={scss.checkout__radioPlaceholder}>
+              <div className={scss.checkout__radioPlaceholderInside}></div>
+            </div>
+            e-Money
+          </label>
+          <label
+            className={`${scss.checkout__labelRadio} ${
+              isCash ? scss.checkout__labelRadioCashChecked : ''
+            }`}
+            htmlFor="cashOnDelivery"
+          >
+            <input
+              className={scss.checkout__radioVisuallyHidden}
+              type="radio"
+              name="payment"
+              value="cashOnDelivery"
+              id="cashOnDelivery"
+              checked={!isMoney}
+              onChange={handleRadioChange}
+            />
+            <div className={scss.checkout__radioPlaceholder}>
+              <div className={scss.checkout__radioPlaceholderInside}></div>
+            </div>
+            Cash on Delivery
+          </label>
+        </div>
       </div>
+      {isMoney ? (
+        <div className={inputsContainer2Style}>
+          <label
+            className={`${scss.checkout__label} ${
+              formik.touched.eMoneyNumber && formik.errors.eMoneyNumber
+                ? scss.errorLabel
+                : ''
+            }`}
+            htmlFor="eMoneyNumber"
+          >
+            e-Money Number
+            <input
+              className={`${scss.checkout__input} ${
+                formik.touched.eMoneyNumber && formik.errors.eMoneyNumber
+                  ? scss.errorInput
+                  : ''
+              }`}
+              type="text"
+              id="eMoneyNumber"
+              placeholder="238521993"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.eMoneyNumber && formik.errors.eMoneyNumber ? (
+              <div className={scss.formikMessage}>
+                {formik.errors.eMoneyNumber}
+              </div>
+            ) : null}
+          </label>
+          <label
+            className={`${scss.checkout__label} ${
+              formik.touched.eMoneyPin && formik.errors.eMoneyPin
+                ? scss.errorLabel
+                : ''
+            }`}
+            htmlFor="eMoneyPin"
+          >
+            e-Money PIN
+            <input
+              className={`${scss.checkout__input} ${
+                formik.touched.eMoneyPin && formik.errors.eMoneyPin
+                  ? scss.errorInput
+                  : ''
+              }`}
+              type="text"
+              id="eMoneyPin"
+              placeholder="6891"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.eMoneyPin && formik.errors.eMoneyPin ? (
+              <div className={scss.formikMessage}>
+                {formik.errors.eMoneyPin}
+              </div>
+            ) : null}
+          </label>
+        </div>
+      ) : (
+        <div className={scss.checkout__descriptionPayment}>
+          <IconCash />
+          <p className={scss.checkout__descriptionPaymentText}>
+            The ‘Cash on Delivery’ option enables you to pay in cash when our
+            delivery courier arrives at your residence. Just make sure your
+            address is correct so that your order will not be cancelled.
+          </p>
+        </div>
+      )}
     </div>
   );
 };
