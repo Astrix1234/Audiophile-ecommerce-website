@@ -46,6 +46,7 @@ export const Checkout = ({ setFormValid, formik }) => {
     inputsContainerStyle += ` ${scss.checkoutMobile__inputsContainer}`;
     inputsContainer2Style += ` ${scss.checkoutMobile__inputsContainer2}`;
     inputsContainer3Style += ` ${scss.checkoutMobile__inputsContainer3}`;
+    paymentContainerStyle += ` ${scss.checkoutMobile__paymentContainer}`;
   }
 
   useEffect(() => {
