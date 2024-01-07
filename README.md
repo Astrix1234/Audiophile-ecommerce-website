@@ -1,10 +1,10 @@
 # Frontend Mentor - Multi-step form
 
-![1](./screenshots/Form.png) ![2](./screenshots/Step2-Monthly.png)
-![3](./screenshots/Step3-Monthly.png) ![4](./screenshots/Step4-Monthly.png)
-![5](./screenshots/Thanks.png) ![6](./screenshots/Step2-Yearly_mobile.png)
-![7](./screenshots/Step3-Yearly_mobile.png)
-![8](./screenshots/Step4-Yearly_mobile.png)
+![1](./screenshots/Screenshot-1.png) ![2](./screenshots/Screenshot-2.png)
+![3](./screenshots/Screenshot-3.png) ![4](./screenshots/Screenshot-4.png)
+![5](./screenshots/Screenshot-5.png) ![6](./screenshots/Screenshot-6.png)
+![7](./screenshots/Screenshot-7.png) ![8](./screenshots/Screenshot-8.png)
+![9](./screenshots/Screenshot-9.png)
 
 ## Developed with
 

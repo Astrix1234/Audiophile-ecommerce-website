@@ -24,10 +24,4 @@ export const validationSchema = Yup.object({
     .min(2, 'Min.2 characters')
     .max(25, 'Max. 25 characters')
     .required('Is required'),
-  eMoneyNumber: Yup.string()
-    .matches(/^\d{9}$/, '9 digits')
-    .required('Is required'),
-  eMoneyPin: Yup.string()
-    .matches(/^\d{4}$/, '4 digits')
-    .required('Is required'),
 });

@@ -51,9 +51,8 @@ export const Checkout = ({ setFormValid, formik }) => {
 
   useEffect(() => {
     const anyFieldTouched = Object.values(formik.touched).some(t => t);
-    const everyFieldTouched = Object.values(formik.touched).every(t => t);
 
-    setFormValid(formik.isValid && everyFieldTouched && anyFieldTouched);
+    setFormValid(formik.isValid && anyFieldTouched);
     // eslint-disable-next-line
   }, [formik.isValid, formik.touched, setFormValid]);
 
@@ -313,59 +312,23 @@ export const Checkout = ({ setFormValid, formik }) => {
       </div>
       {isMoney ? (
         <div className={inputsContainer2Style}>
-          <label
-            className={`${scss.checkout__label} ${
-              formik.touched.eMoneyNumber && formik.errors.eMoneyNumber
-                ? scss.errorLabel
-                : ''
-            }`}
-            htmlFor="eMoneyNumber"
-          >
+          <label className={scss.checkout__label} htmlFor="eMoneyNumber">
             e-Money Number
             <input
-              className={`${scss.checkout__input} ${
-                formik.touched.eMoneyNumber && formik.errors.eMoneyNumber
-                  ? scss.errorInput
-                  : ''
-              }`}
+              className={scss.checkout__input}
               type="text"
               id="eMoneyNumber"
               placeholder="238521993"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
             />
-            {formik.touched.eMoneyNumber && formik.errors.eMoneyNumber ? (
-              <div className={scss.formikMessage}>
-                {formik.errors.eMoneyNumber}
-              </div>
-            ) : null}
           </label>
-          <label
-            className={`${scss.checkout__label} ${
-              formik.touched.eMoneyPin && formik.errors.eMoneyPin
-                ? scss.errorLabel
-                : ''
-            }`}
-            htmlFor="eMoneyPin"
-          >
+          <label className={scss.checkout__label} htmlFor="eMoneyPin">
             e-Money PIN
             <input
-              className={`${scss.checkout__input} ${
-                formik.touched.eMoneyPin && formik.errors.eMoneyPin
-                  ? scss.errorInput
-                  : ''
-              }`}
+              className={scss.checkout__input}
               type="text"
               id="eMoneyPin"
               placeholder="6891"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
             />
-            {formik.touched.eMoneyPin && formik.errors.eMoneyPin ? (
-              <div className={scss.formikMessage}>
-                {formik.errors.eMoneyPin}
-              </div>
-            ) : null}
           </label>
         </div>
       ) : (
