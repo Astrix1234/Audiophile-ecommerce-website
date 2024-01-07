@@ -1,4 +1,4 @@
-# Frontend Mentor - Multi-step form
+# Frontend Mentor - Audiophile ecommerce website
 
 ![1](./screenshots/Screenshot-1.png) ![2](./screenshots/Screenshot-2.png)
 ![3](./screenshots/Screenshot-3.png) ![4](./screenshots/Screenshot-4.png)
