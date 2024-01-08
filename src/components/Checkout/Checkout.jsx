@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 export const Checkout = ({ setFormValid, formik }) => {
   const [isMoney, setIsMoney] = useState(true);
-  const [isCash, setIsCash] = useState(false);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1279 });
@@ -58,7 +57,6 @@ export const Checkout = ({ setFormValid, formik }) => {
 
   const handleRadioChange = () => {
     setIsMoney(!isMoney);
-    setIsCash(!isCash);
   };
 
   return (
@@ -290,7 +288,7 @@ export const Checkout = ({ setFormValid, formik }) => {
           </label>
           <label
             className={`${scss.checkout__labelRadio} ${
-              isCash ? scss.checkout__labelRadioCashChecked : ''
+              !isMoney ? scss.checkout__labelRadioCashChecked : ''
             }`}
             htmlFor="cashOnDelivery"
           >
