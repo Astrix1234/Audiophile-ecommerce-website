@@ -31,7 +31,7 @@ Users should be able to:
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser
   (using localStorage)
 
-  ## Implementation
+## Implementation
 
 In the application, React components are imported along with the use of context
 and lazy loading for performance optimization. Currently, data is fetched from a
